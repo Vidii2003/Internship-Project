@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './Login.css';
-import { FaUser, FaLock, FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
-const LoginRegister = () => {
+const Login = () => {
     const [action, setAction] = useState('');
     const [input, setInput] = useState({
         username: '',
@@ -10,34 +10,17 @@ const LoginRegister = () => {
         password: '',
         confirmPassword: ''
     });
-    const [errors, setErrors] = useState({});
+    let [errors, setErrors] = useState({});
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
     const [showPassword, setShowPassword] = useState(false); // Password visibility state
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Confirm password visibility state
 
     const registerLink = () => {
         setAction('active');
     };
 
-    const loginLink = () => {
-        setAction('');
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInput((prevInput) => ({
-            ...prevInput,
-            [name]: value
-        }));
-    };
-
-    const handleCheckboxChange = (e) => {
-        setIsCheckboxChecked(e.target.checked);
-    };
-
     const validate = () => {
         let isValid = true;
-        let errors = {};
+        errors = {};
         const { email, password, confirmPassword } = input;
 
         // Email validation using regex
@@ -90,11 +73,11 @@ const LoginRegister = () => {
         return isValid;
     };
 
-    const handleRegistration = (e) => {
+    const handlelogin = (e) => {
         e.preventDefault();
         if (validate()) {
             // Perform registration logic here
-            alert("Registration Successful!");
+            alert("Login Successful!");
             setInput({
                 username: '',
                 email: '',
@@ -115,7 +98,7 @@ const LoginRegister = () => {
     return (
         <div className={`wrapper ${action}`}>
             <div className="form-box login">
-                <form action="">
+                <form action="" onSubmit={handlelogin}>
                     <h1>Login</h1>
                     <div className="input-box">
                         <input type="text" placeholder="Member ID" required />
@@ -135,6 +118,7 @@ const LoginRegister = () => {
 
                     <div className="remember-forgot">
                         <label><input type="checkbox" />Remember me</label>
+                        <a href="#">Forget Memberid?</a><br/>
                         <a href="#">Forgot Password?</a>
                     </div>
 
@@ -149,4 +133,4 @@ const LoginRegister = () => {
     );
 };
 
-export default LoginRegister;
+export default Login;
