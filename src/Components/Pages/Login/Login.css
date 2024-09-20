@@ -75,12 +75,12 @@ form .input-box{
     margin-right: 10px;
 }
 
-.ph2{
-    right: 20%;
+.ph3{
+    position: absolute;
+    left: 328px;
     top: 50%;
     translate: 0 -50%;
-    margin-left: -75px;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 form .remember-forgot{
