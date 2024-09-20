@@ -116,7 +116,7 @@ form button{
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     cursor: pointer;
     font-size: 16px;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     color: #333;
     font-weight: 700;
 }
