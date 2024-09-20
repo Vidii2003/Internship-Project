@@ -102,7 +102,7 @@ const Login = () => {
                     </div>
                     <div className="input-box">
                         <input type="text" placeholder="Mobile Number" required />
-                        <GiRotaryPhone className="ph2" />
+                        <GiRotaryPhone className="ph3" />
                     </div>
                     <div className="input-box">
                         <input type={showPassword ? "text" : "password"} placeholder="Password" required />
