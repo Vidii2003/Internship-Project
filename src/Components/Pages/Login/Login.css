@@ -21,7 +21,7 @@
     transition: transform 0.18s ease;
 }
 
-.form-box.pass {
+.form-box.login {
     position: absolute;
     left: 0;
 }
@@ -70,15 +70,64 @@ form .input-box{
     translate: 0 -50%;
     font-size: 20px;
 }
+.ph{
+    font-size: 25px;
+    margin-right: 10px;
+}
 
-form button{
+.ph2{
+    right: 20%;
+    top: 50%;
+    translate: 0 -50%;
+    margin-left: -37px;
+    font-size: 16px;
+}
+
+form .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+}
+
+.pr{
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+.member{
+    margin-left: 20px;
+    margin-right: 0px;
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 4px;
+}
+
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Space between the icon and the text */
     width: 100%;
     height: 45px;
     background: #fff;
     border: none;
     outline: none;
     border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
     color: #333;
@@ -138,22 +187,4 @@ form .register-link{
     color: red;
     font-size: 20px;
     border-radius: 5px;
-}
-
-.phone-input-container {
-    position: relative;
-}
-
-.phone-input {
-    padding-left: 60px; /* Adjust to fit the country code display */
-}
-
-.phone-input .country-code {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 10px;
-    background: #f5f5f5;
-    border-right: 1px solid #ddd;
 }
