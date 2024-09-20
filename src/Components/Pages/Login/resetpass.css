@@ -21,7 +21,7 @@
     transition: transform 0.18s ease;
 }
 
-.form-box.login {
+.form-box.pass {
     position: absolute;
     left: 0;
 }
@@ -51,6 +51,14 @@ form .input-box{
     padding: 20px 45px 20px 20px;
 }
 
+.ph1{
+    position: absolute;
+    left: 365px;
+    top: 178px;
+    translate: 0 -50%;
+    font-size: 25px;
+}
+
 .input-box input::placeholder{
     color: #fff;
 }
@@ -71,27 +79,19 @@ form .input-box{
     font-size: 20px;
 }
 
-form .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 4px;
-}
-
-.remember-forgot a{
+.phone{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 40px;
+    font-size: 16px;
     color: #fff;
-    text-decoration: none;
+    padding: 20px 45px 20px 20px;
 }
-
-.remember-forgot a:hover{
-    text-decoration: underline;
-}
-
+/*
 form button{
     width: 100%;
     height: 45px;
@@ -104,22 +104,21 @@ form button{
     font-size: 16px;
     color: #333;
     font-weight: 700;
-}
+}*/
 
-form .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-
-.register-link p a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.register-link p a:hover{
-    text-decoration: underline;
+.res{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: #333;
+    font-weight: 700;
 }
 
 .password-input {
