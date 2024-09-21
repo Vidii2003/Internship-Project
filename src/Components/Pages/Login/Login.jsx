@@ -122,7 +122,9 @@ const Login = () => {
                     <button type="submit" className="btn"><MdSendToMobile className="ph"/>Login</button>
 
                     <div className="register-link">
-                        <p>Don't have an account? <a href="#" onClick={registerLink}>Register</a></p>
+                        <p>
+                        Don't have an account? <Link to="/Register">Register</Link>
+                        </p>
                     </div>
                 </form>
             </div>
