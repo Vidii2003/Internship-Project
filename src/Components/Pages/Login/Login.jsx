@@ -17,10 +17,6 @@ const Login = () => {
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const registerLink = () => {
-        setAction('active');
-    };
-
     const validate = () => {
         let isValid = true;
         errors = {};
