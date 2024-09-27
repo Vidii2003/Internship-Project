@@ -1,0 +1,128 @@
+[33mcommit 06c13fa6b608bd12d0473ec156e16e71d4effd50[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Fri Sep 27 22:10:44 2024 +0530
+
+    Move the Code from Main to Branch Front-end by Vidya
+
+[33mcommit e17aaab6b003406f440aa60699e310d1d16365cc[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 16:23:57 2024 +0530
+
+    Merging Login Page and Register Page by Vidya
+
+[33mcommit 8b724245ede4aa3c41277ab65427e45a866edabb[m
+Merge: b4b5ef03 91aa0bb0
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 16:22:23 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit b4b5ef03b9f20d177601dfa68078bfb32ed14a61[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 16:14:32 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit 3232d25f0be9cc1a00ace270d8e4551a48a53433[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 02:31:29 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit b6645e554a0f177eac1a6915cc330c70c4881abd[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 02:25:58 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit a9e715cfaa5de263f153f61c100f733a92fc21d1[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Sat Sep 21 02:10:28 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit 91aa0bb034d563bf49ffd11aaf9b4a781c0a2fc0[m
+Merge: 7b668215 0084e8ca
+Author: VASAN <121268552+Vasan001@users.noreply.github.com>
+Date:   Fri Sep 20 23:14:29 2024 +0530
+
+    Merge pull request #3 from Vidii2003/Vasan001-patch-2
+    
+    Update App.js
+
+[33mcommit 67c4cf69d045f6bd94870351027f5d657b10675b[m
+Merge: 360eb0a8 7b668215
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Fri Sep 20 22:53:12 2024 +0530
+
+    Merge branch 'main' of https://github.com/Vidii2003/Internship-Project
+
+[33mcommit 360eb0a8b8bba25d181f7bd853d791c3957ff605[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Fri Sep 20 22:52:38 2024 +0530
+
+    Login Page by Vidya - 1
+
+[33mcommit 4214b35a49016044929654262b7a8585997f7cde[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Tue Sep 17 22:53:03 2024 +0530
+
+    Login Page by Vidya
+
+[33mcommit 0084e8ca7f54512f4ca63b88817063c33f32325c[m[33m ([m[1;31morigin/Vasan001-patch-2[m[33m)[m
+Author: VASAN <121268552+Vasan001@users.noreply.github.com>
+Date:   Tue Sep 17 19:10:19 2024 +0530
+
+    Update App.js
+
+[33mcommit 7b6682152ad035775c2cc202b3bb6d0ccb6427e3[m
+Merge: 017a5107 94b5efc1
+Author: VASAN <121268552+Vasan001@users.noreply.github.com>
+Date:   Tue Sep 17 19:02:23 2024 +0530
+
+    Merge pull request #2 from Vidii2003/Vasan001-patch-1
+    
+    Account setup and personal info
+
+[33mcommit 94b5efc164016da295270e031b50d607797f0e4e[m[33m ([m[1;31morigin/Vasan001-patch-1[m[33m)[m
+Author: VASAN <121268552+Vasan001@users.noreply.github.com>
+Date:   Tue Sep 17 19:01:53 2024 +0530
+
+    Account setup and personal info
+
+[33mcommit 017a51079de736b9c155e48a04201649e9a5d802[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Tue Sep 17 14:01:26 2024 +0530
+
+    Remove large file of NOde_modules/.cache/default-development/9.pack and update .gitignore to exclude cache files
+
+[33mcommit 396d888a3da7aab23c40bc15cc3b3cee5413b21e[m
+Merge: b44d1339 a927edd6
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Tue Sep 17 13:55:31 2024 +0530
+
+    Initial Stage of the File
+
+[33mcommit b44d13397245b0b222e14f4912b4fb6756eaec92[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Tue Sep 17 13:44:27 2024 +0530
+
+    Initial Stage of the File
+
+[33mcommit a927edd6745f7bc41ebd028361a1ac9c350b7007[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Mon Sep 16 15:09:49 2024 +0530
+
+    Initialize project using Create React App
+
+[33mcommit 31831bd02bb7d5c27947f288a7fb6ebc173e77a8[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Mon Sep 16 14:37:23 2024 +0530
+
+    First Commit Login Vidya
+
+[33mcommit 688a4d388b574ff4b0edff657977944aaf8c7ff7[m
+Author: Vidii2003 <gsvidya2003@gmail.com>
+Date:   Mon Sep 16 14:27:44 2024 +0530
+
+    Initialize project using Create React App
