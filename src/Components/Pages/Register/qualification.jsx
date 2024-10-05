@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Qualification({ onNext, onPrevious }){
     let [value,Setvalue] = useState({})
     const handleNext = () => {
+        alert("Register Successfull");
         onNext();
         }
     
