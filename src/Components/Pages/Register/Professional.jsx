@@ -1,9 +1,9 @@
-import './personal.css';
+import './Professional.css';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function Personal({ onNext, onPrevious }){
+function Professional({ onNext, onPrevious }){
 
   // const navigate = useNavigate();
   let [data,Setdata] = useState({})
@@ -50,7 +50,7 @@ function Personal({ onNext, onPrevious }){
                   </div>
                   <div className='form-actions' style={{ marginTop: '20px' }}>
                     <button onClick={onPrevious} style={{ marginRight: '10px' }}>Prev</button>
-                    <button>subbmit</button>
+                    <Link to="/"><button>subbmit</button></Link>
                   </div>
             </form>
           </div>  
@@ -58,7 +58,7 @@ function Personal({ onNext, onPrevious }){
     )
 }
 
-export default Personal;
+export default Professional;
 
 
 // navigate('/Detail', {replace: true , state: {data,state}})}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AccountSetup from './accountsetup';
 import PersonalInformation from './personalinformation';
 import AddressForm from './AddressForm';
-import Personal from './personal';
+import Personal from './Professional';
 import Qualification from './qualification';
 
 const SetupWizard = () => {
