@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Qualification({ onNext, onPrevious }){
     let [value,Setvalue] = useState({})
     const handleNext = () => {
-        alert("Register Successfull");
         onNext();
         }
     
@@ -31,11 +30,6 @@ console.log(value)
 
     return(
         <div className="MAIN-container">
-            <div className="header-location">
-                <h5>Account Setup &#62; Personal Details &#62; Countact Defaios &#62; Qualification</h5>
-                <h3 className="logout">Logout</h3>
-            </div>
-            <hr id="hrtag"></hr>
             <div className="form-container">
                 <h3 className="form-topic">Qualification</h3>
                 <form className="form-rapper">
