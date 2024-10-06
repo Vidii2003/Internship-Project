@@ -1,0 +1,36 @@
+/* Container to make the table responsive */
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Enables horizontal scrolling for smaller screens */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  border-radius: 8px; /* Rounded corners for aesthetic */
+  padding: 20px; /* Padding around the table */
+}
+
+/* Styling for the table */
+.member-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures borders are not doubled */
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(255, 165, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Mixed orange and black gradient */
+}
+
+/* Add border to the table header and cells */
+.member-table th, .member-table td {
+  border: 1px solid #ddd; /* Border color */
+  padding: 12px 15px; /* Padding inside table cells */
+}
+
+/* Styling for table headers */
+.member-table th {
+  background-color: rgba(255, 165, 0, 0.8); /* Solid orange background for headers */
+  font-weight: bold; /* Make headers bold */
+}
+
+/* Row hover effect */
+.member-table tr:hover {
+  background-color: rgba(255, 165, 0, 0.4); /* Light orange background on row hover */
+}
