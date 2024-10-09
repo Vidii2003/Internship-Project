@@ -1,16 +1,13 @@
-from django.http import JsonResponse
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status,generics
 from .models import *
-from django.shortcuts import render, get_object_or_404
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from django.contrib.auth.decorators import login_required
-
 
 class MemberCreateView(APIView):
     
@@ -132,39 +129,3 @@ def login_view(request):
     return Response({"non_field_errors": ["Invalid credentials: Incorrect username or password."]}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@login_required
-def personal_information(request):
-    # Get the user profile based on the logged-in user
-    user_profile = get_object_or_404(UserProfile, user=request.user)
-    
-    # Role checking
-    if user_profile.role == 'admin':
-        # Return all details for admin
-        response_data = {
-            'first_name': user_profile.first_name,
-            'middle_name': user_profile.middle_name,
-            'last_name': user_profile.last_name,
-            'father_name': user_profile.father_name,
-            'mother_name': user_profile.mother_name,
-            'spouse_name': user_profile.spouse_name,
-            'mobile1': user_profile.mobile1,
-            'mobile2': user_profile.mobile2,
-            'country_code1': user_profile.country_code1,
-            'country_code2': user_profile.country_code2,
-            'dob': user_profile.dob,
-            'gender': user_profile.gender,
-            'blood_group': user_profile.blood_group,
-            'role': user_profile.role
-        }
-    else:
-        # Return limited details for regular users
-        response_data = {
-            'first_name': user_profile.first_name,
-            'last_name': user_profile.last_name,
-            'mobile1': user_profile.mobile1,
-            'country_code1': user_profile.country_code1,
-            'dob': user_profile.dob,
-            'gender': user_profile.gender,
-        }
-
-    return JsonResponse(response_data)
