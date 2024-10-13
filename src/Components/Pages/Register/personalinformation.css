@@ -1,0 +1,118 @@
+/* Main Form Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.form-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    width: 440px;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.input-box input,
+.input-box select {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-box select {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-box input::placeholder {
+    color: #ccc;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+}
+
+/* Phone Input Container */
+.phone-input {
+    display: flex;
+    align-items: center;
+}
+
+.phone-input select,
+.phone-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.phone-input input {
+    margin-left: 10px;
+}
+
+/* Form Buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.form-actions button:hover {
+    background-color: #ddd;
+}
+
+/* Error Styling */
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.error-box {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-left: 4px solid red;
+    padding: 8px 12px;
+    margin: 10px 0;
+    color: red;
+    font-size: 14px;
+    border-radius: 5px;
+}
