@@ -19,22 +19,28 @@ class MemberCreateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class MemberListView(APIView):
-
     def get(self, request):
-        mobile_number = request.query_params.get('mobile_number')  # Get the mobile number from the query parameter
+        # Fetch all members
+        members = Member.objects.all()
+        serializer = MemberSerializer(members, many=True)  # Serialize all members
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class MemberDetailView(APIView):
+    def get(self, request):
+        # Get the mobile number from the query parameters
+        mobile_number = request.query_params.get('mobile_number')
+
         if mobile_number:
             try:
-                # Fetch the member by Mobile_number1
-                member = Member.objects.get(Mobile_number1=mobile_number)
-                serializer = MemberSummarySerializer(member)
+                # Fetch the member by mobile number
+                member = Member.objects.get(mobileNumber1=mobile_number)
+                serializer = MemberSerializer(member)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except Member.DoesNotExist:
                 return Response({"error": "Member not found"}, status=status.HTTP_404_NOT_FOUND)
         else:
-            # If no mobile number is provided, return all members
-            members = Member.objects.all()
-            serializer = MemberSummarySerializer(members, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"error": "Mobile number is required."}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 def account_setup(request):
@@ -128,4 +134,20 @@ def login_view(request):
     
     return Response({"non_field_errors": ["Invalid credentials: Incorrect username or password."]}, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST'])  # Change to POST
+def member_detail(request):
+    # Get mobile number from the request body
+    mobile_number = request.data.get('mobile_number')  # Expecting JSON with this key
 
+    if not mobile_number:
+        return Response({'error': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    # Fetch the member using the mobile number
+    member = Member.objects.filter(mobileNumber1=mobile_number).first()
+
+    if not member:
+        return Response({'error': 'Member not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+    # Serialize the member data
+    serializer = MemberSerializer(member)
+    return Response(serializer.data, status=status.HTTP_200_OK)

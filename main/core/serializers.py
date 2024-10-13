@@ -15,7 +15,7 @@ class MemberSerializer(serializers.ModelSerializer):
 class MemberSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
-        fields = ['Mobile_number1', 'First_name', 'Gender']
+        fields = ['__all__']
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -45,7 +45,7 @@ class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, data):
-        username = data.get('mobile')
+        username = data.get('username')
         member_id = data.get('member_id')
         password = data.get('password')
 
@@ -61,3 +61,6 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError('Invalid credentials: User does not match member ID.')
 
         return data
+    
+
+

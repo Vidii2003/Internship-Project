@@ -12,3 +12,5 @@ def generate_member_id():
     new_id = int(last_id[3:]) + 1
     new_member_id = f"mem{new_id:03d}"
     return new_member_id
+
+
