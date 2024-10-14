@@ -6,10 +6,10 @@ body {
     align-items: center;
     margin: 0;   
 }
-.form-container {
+.form-container.per {
     
     position: relative;
-    width: 440px; 
+    width: 450px; 
     height: 550px; 
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -20,9 +20,24 @@ body {
     display: flex;
     align-items: center;
     transition: height .2s ease;
-    overflow: hidden;
+    overflow: auto;
    
     
+}
+.form-container.add{
+position: relative;
+    width: 460px; 
+    height: 550px; 
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(35px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    transition: height .2s ease;
+    overflow: auto;
 }
 
 .form-container .form-box {
@@ -317,6 +332,14 @@ body {
     font-size: 20px;
     margin-left:2%;
 }
+
+.cah2{
+    margin-bottom: 5%;
+    text-align: left;
+    font-size: 20px;
+    margin-left:2%;
+}
+
 .checkbox-container{
     margin-bottom: 10%;
     font-size: 20px;
@@ -327,6 +350,7 @@ body {
     font-size: 60%;
     margin-left:-40%;
 }
+
 .checkbox-container .dobla{
     margin-bottom: -6%;
     margin-top: -6%;
@@ -334,7 +358,27 @@ body {
     margin-left:15%;
     color: #fff;
 }
+.checkbox-container1{
+    margin-bottom: 15%;
+    font-size: 20px;
+    margin-top: -8%;
+    
+}
 
+.checkbox-container1 .dob{
+    margin-top: 10%;
+    margin-bottom: -6%;
+    font-size: 60%;
+    margin-left:-40%;
+}
+
+.checkbox-container1 .doblasame{
+    margin-bottom: -6%;
+    margin-top: -6%;
+    font-size: 18px;
+    margin-left:15%;
+    color: #fff;
+}
 .input-box1 input,
 .input-box1 select {
     width: 100%;
@@ -484,4 +528,29 @@ body {
     top: 28%;
     transform: translateY(-50%);
     pointer-events: none; /* Prevent arrow from blocking clicks */
+}
+.input-box .icon8 {
+    position: absolute;
+    right: 6.5%;
+    top: 33%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 20px;
+}
+
+.input-box .icon9 {
+    position: absolute;
+    right: 6.5%;
+    top: 32%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+}
+.input-box3 input{
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 40px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
 }

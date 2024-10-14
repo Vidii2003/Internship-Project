@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './AddressForm.css';
+import { FaEnvelope, FaHome, FaMapMarkedAlt, FaCity, FaBuilding, FaFlag, FaGlobe, FaMailBulk } from 'react-icons/fa'; // Import icons
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { MdShareLocation } from "react-icons/md";
 import './style.css';
 
 const AddressForm = ({ onNext, onPrevious }) => {
-  const [Email,setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [commDoorNo, setCommDoorNo] = useState('');
   const [commStreetName, setCommStreetName] = useState('');
   const [commArea, setCommArea] = useState('');
@@ -23,50 +25,12 @@ const AddressForm = ({ onNext, onPrevious }) => {
   const [permCountry, setPermCountry] = useState('');
   const [permPincode, setPermPincode] = useState('');
 
-  // State for checkbox
-  const [copyAddress, setCopyAddress] = useState(false);
+  const [sameAsComm, setSameAsComm] = useState(false);
 
-  // Handle changes in communication address fields
-  const handleCommChange = (e, setter) => {
-    setter(e.target.value);
-    if (copyAddress) {
-      switch (e.target.name) {
-        case 'commDoorNo':
-          setPermDoorNo(e.target.value);
-          break;
-        case 'commStreetName':
-          setPermStreetName(e.target.value);
-          break;
-        case 'commArea':
-          setPermArea(e.target.value);
-          break;
-        case 'commCity':
-          setPermCity(e.target.value);
-          break;
-        case 'commDistrict':
-          setPermDistrict(e.target.value);
-          break;
-        case 'commState':
-          setPermState(e.target.value);
-          break;
-        case 'commCountry':
-          setPermCountry(e.target.value);
-          break;
-        case 'commPincode':
-          setPermPincode(e.target.value);
-          break;
-        default:
-          break;
-      }
-    }
-  };
-
-  // Handle checkbox change
-  const handleCheckboxChange = (e) => {
-    const isChecked = e.target.checked;
-    setCopyAddress(isChecked);
-
-    if (isChecked) {
+  // Function to handle checkbox
+  const handleSameAsComm = () => {
+    setSameAsComm(!sameAsComm);
+    if (!sameAsComm) {
       setPermDoorNo(commDoorNo);
       setPermStreetName(commStreetName);
       setPermArea(commArea);
@@ -76,6 +40,7 @@ const AddressForm = ({ onNext, onPrevious }) => {
       setPermCountry(commCountry);
       setPermPincode(commPincode);
     } else {
+      // Clear permanent address fields when checkbox is unchecked
       setPermDoorNo('');
       setPermStreetName('');
       setPermArea('');
@@ -85,218 +50,230 @@ const AddressForm = ({ onNext, onPrevious }) => {
       setPermCountry('');
       setPermPincode('');
     }
-    
-}
-const handleNext = () => {
-  onNext(); // Navigate to next page
-}
-  return (
-<div className='wrapper'>
-<h1>Contact Details</h1>
-     <div className='form-box login'>
-      <div className='input-box'>
-    <div>
-      
-      
-      <div>
-        <label>
-          Email:
-          <input
-          type="email"
-          value={Email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          />
-        </label>
-      </div>
-      <div>
-        <h2>Current Address</h2>
-        <label>
-          Door No:
-          <input
-            type="text"
-            name="commDoorNo"
-            value={commDoorNo}
-            onChange={(e) => handleCommChange(e, setCommDoorNo)}
-          />
-        </label>
-        <br />
-        <label>
-          Street Name:
-          <input
-            type="text"
-            name="commStreetName"
-            value={commStreetName}
-            onChange={(e) => handleCommChange(e, setCommStreetName)}
-          />
-        </label>
-        <br />
-        <label>
-          Area:
-          <input
-            type="text"
-            name="commArea"
-            value={commArea}
-            onChange={(e) => handleCommChange(e, setCommArea)}
-          />
-        </label>
-        <br />
-        <label>
-          City:
-          <input
-            type="text"
-            name="commCity"
-            value={commCity}
-            onChange={(e) => handleCommChange(e, setCommCity)}
-          />
-        </label>
-        <br />
-        <label>
-          District:
-          <input
-            type="text"
-            name="commDistrict"
-            value={commDistrict}
-            onChange={(e) => handleCommChange(e, setCommDistrict)}
-          />
-        </label>
-        <br />
-        <label>
-          State:
-          <input
-            type="text"
-            name="commState"
-            value={commState}
-            onChange={(e) => handleCommChange(e, setCommState)}
-          />
-        </label>
-        <br />
-        <label>
-          Country:
-          <input
-            type="text"
-            name="commCountry"
-            value={commCountry}
-            onChange={(e) => handleCommChange(e, setCommCountry)}
-          />
-        </label>
-        <br />
-        <label>
-          Pincode:
-          <input
-            type="text"
-            name="commPincode"
-            value={commPincode}
-            onChange={(e) => handleCommChange(e, setCommPincode)}
-          />
-        </label>
-      </div>
-      <br/>
-      <div>
-        
-          <input
-            type="checkbox"
-            checked={copyAddress}
-            onChange={handleCheckboxChange}
-          />
-          <label>
-          Current Address is same as Permanent Address
-        </label>
-      </div>
-      
+  };
 
-      <div>
-        <h2>Permanent Address</h2>
-        <label>
-          Door No:
-          <input
-            type="text"
-            value={permDoorNo}
-            onChange={(e) => setPermDoorNo(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          Street Name:
-          <input
-            type="text"
-            value={permStreetName}
-            onChange={(e) => setPermStreetName(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          Area:
-          <input
-            type="text"
-            value={permArea}
-            onChange={(e) => setPermArea(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          City:
-          <input
-            type="text"
-            value={permCity}
-            onChange={(e) => setPermCity(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          District:
-          <input
-            type="text"
-            value={permDistrict}
-            onChange={(e) => setPermDistrict(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          State:
-          <input
-            type="text"
-            value={permState}
-            onChange={(e) => setPermState(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          Country:
-          <input
-            type="text"
-            value={permCountry}
-            onChange={(e) => setPermCountry(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br />
-        <label>
-          Pincode:
-          <input
-            type="text"
-            value={permPincode}
-            onChange={(e) => setPermPincode(e.target.value)}
-            disabled={copyAddress}
-          />
-        </label>
-        <br/>
-        <br/>
-        <div className='form-actions' style={{ marginTop: '20px' }}>
-        <button onClick={onPrevious} style={{ marginRight: '10px' }}>Prev</button>
-        <button onClick={handleNext}>Next</button>
+  const handleNext = () => {
+    // Add your validation and navigation logic here
+    onNext();
+  };
+
+  return (
+    <div className='form-container add'>
+      <div className='form-box'>
+        <h1 className="s1th1">Address Information</h1>
+        <div className='form-group'>
+          <div className="input-box">
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <FaEnvelope className="icon9" />
+          </div>
+
+          <div className="input-box3">
+            <h2 className="cah2">Communication Address</h2>
+
+            <div className="input-box">
+              <input
+                type="text"
+                placeholder="Door No."
+                value={commDoorNo}
+                onChange={(e) => setCommDoorNo(e.target.value)}
+                required
+              />
+              <FaHome className="icon8" />
+            </div>
+            <div className="input-box">
+              <input
+                type="text"
+                placeholder="Street Name"
+                value={commStreetName}
+                onChange={(e) => setCommStreetName(e.target.value)}
+                required
+              />
+              <FaMapMarkedAlt className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Area"
+                value={commArea}
+                onChange={(e) => setCommArea(e.target.value)}
+                required
+              />
+              <MdShareLocation className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="City"
+                value={commCity}
+                onChange={(e) => setCommCity(e.target.value)}
+                required
+              />
+              <FaCity className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="District"
+                value={commDistrict}
+                onChange={(e) => setCommDistrict(e.target.value)}
+                required
+              />
+              <FaBuilding className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="State"
+                value={commState}
+                onChange={(e) => setCommState(e.target.value)}
+                required
+              />
+              <FaLocationCrosshairs className="icon8"/>
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Country"
+                value={commCountry}
+                onChange={(e) => setCommCountry(e.target.value)}
+                required
+              />
+              <FaGlobe className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Pincode"
+                value={commPincode}
+                onChange={(e) => setCommPincode(e.target.value)}
+                required
+              />
+              <FaMailBulk className="icon8" />
+            </div>
+          </div>
+
+          <div className="checkbox-container1">
+            <input
+              className="dob"
+              type="checkbox"
+              id="sameAsComm"
+              checked={sameAsComm}
+              onChange={handleSameAsComm}
+            />
+            <label className="doblasame" htmlFor="sameAsComm">Same as Communication Address</label>
+          </div>
+
+          <div className="input-box3">
+            <h2 className="cah2">Permanent Address</h2>
+
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Door No."
+                value={permDoorNo}
+                onChange={(e) => setPermDoorNo(e.target.value)}
+                required
+              />
+              <FaHome className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Street Name"
+                value={permStreetName}
+                onChange={(e) => setPermStreetName(e.target.value)}
+                required
+              />
+              <FaMapMarkedAlt className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Area"
+                value={permArea}
+                onChange={(e) => setPermArea(e.target.value)}
+                required
+              />
+              <MdShareLocation className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="City"
+                value={permCity}
+                onChange={(e) => setPermCity(e.target.value)}
+                required
+              />
+              <FaCity className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="District"
+                value={permDistrict}
+                onChange={(e) => setPermDistrict(e.target.value)}
+                required
+              />
+              <FaBuilding className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="State"
+                value={permState}
+                onChange={(e) => setPermState(e.target.value)}
+                required
+              />
+              <FaLocationCrosshairs className="icon8"/>
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Country"
+                value={permCountry}
+                onChange={(e) => setPermCountry(e.target.value)}
+                required
+              />
+              <FaGlobe className="icon8" />
+            </div>
+            <div className="input-box">
+              
+              <input
+                type="text"
+                placeholder="Pincode"
+                value={permPincode}
+                onChange={(e) => setPermPincode(e.target.value)}
+                required
+              />
+              <FaMailBulk className="icon8" />
+            </div>
+          </div>
+
+          <button onClick={onPrevious} className="res2">Previous</button>
+          <button onClick={handleNext} className="res1">Next</button>
+        </div>
       </div>
-      </div>
-    </div>
-    </div>
-    </div>
     </div>
   );
 };
+
 export default AddressForm;

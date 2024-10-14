@@ -148,7 +148,7 @@ const PersonalInformation = ({ onNext, onPrevious }) => {
   };
 
   return (
-    <div className='form-container'>
+    <div className='form-container per'>
       <div className='form-box'>
         <h1 className="s1th1">Personal Information</h1>
         <div className='form-group'>
