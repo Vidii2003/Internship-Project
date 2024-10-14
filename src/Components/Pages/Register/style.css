@@ -40,6 +40,15 @@ position: relative;
     overflow: auto;
 }
 
+.form-container.add .form-box {
+    width: 100%;
+    padding: 20px;
+    margin-left:0px;
+    box-sizing: border-box;
+    transition: transform 0.18s ease;
+    
+}
+
 .form-container .form-box {
     width: 100%;
     padding: 20px;
@@ -456,6 +465,13 @@ position: relative;
     color: #fff;
 }
 
+.form-box .a1th1{
+    font-size: 36px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 7%;
+    color: #fff;
+}
 .input-box .title {
     color: #fff;
     margin-left: 5%;

@@ -60,7 +60,7 @@ const AddressForm = ({ onNext, onPrevious }) => {
   return (
     <div className='form-container add'>
       <div className='form-box'>
-        <h1 className="s1th1">Address Information</h1>
+        <h1 className="a1th1">Address Information</h1>
         <div className='form-group'>
           <div className="input-box">
             <input
