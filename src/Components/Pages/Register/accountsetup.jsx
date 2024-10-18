@@ -158,7 +158,7 @@ const AccountSetup = ({ onNext }) => {
     <div className="wrapper">
       <div className="form-box acc">
         <form onSubmit={handleSubmit}>
-          <h1 className="sth1">Account Setup</h1>
+          <h2 className="sth1">Account Setup</h2>
           <PhoneInputWrapper>
             <PhoneInput
               className="phone1"

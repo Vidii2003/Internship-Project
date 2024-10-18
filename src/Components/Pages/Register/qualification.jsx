@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { FaGraduationCap, FaUserGraduate, FaBuilding, FaStream, FaLaptopCode, FaCalendarAlt } from "react-icons/fa"; // Import icons
+import { FaSortDown } from "react-icons/fa";
 import './qualification.css';
 import { useNavigate } from "react-router-dom";
-
+import './style.css';
 function Qualification({ onNext, onPrevious }) {
   let [value, setValue] = useState({});
   
@@ -35,23 +36,24 @@ function Qualification({ onNext, onPrevious }) {
   console.log(value);
 
   return (
-    <div className="form-container qual">
-      <div className="form-box">
-        <h3 className="form-topic">Qualification</h3>
-        <form className="form-rapper" onSubmit={getValue}>
-          <div className="input-box">
+    <div className="form-container5 qual">
+      <div className="form-box5">
+        <h2 className="qualh2">Qualification</h2>
+        <form className="form-rapper5" onSubmit={getValue}>
+          <div className="input-box5">
             <select name="Qualification" required id="select" className="select-field">
-              <option>---------------SELECT--------------</option>
+              <option>Qualification</option>
               <option value={"SSSLC"}>SSLC</option>
               <option value={'HSC'}>HSC</option>
               <option value={"DEGREE"}>Degree</option>
               <option value={"M,sc."}>M,sc.</option>
               <option value={"PHD"}>PHD</option>
             </select>
+            <FaSortDown className="icon10"/>
             <FaGraduationCap className="icon-qual" />
           </div>
 
-          <div className="input-box">
+          <div className="input-box5">
             <input
               type="text"
               name="stream"
@@ -62,7 +64,7 @@ function Qualification({ onNext, onPrevious }) {
             <FaStream className="icon-qual" />
           </div>
 
-          <div className="input-box">
+          <div className="input-box5">
             <input
               type="text"
               name="Skills"
@@ -73,7 +75,7 @@ function Qualification({ onNext, onPrevious }) {
             <FaLaptopCode className="icon-qual" />
           </div>
 
-          <div className="input-box">
+          <div className="input-box5">
             <input
               type="text"
               placeholder="Institute name"
@@ -84,7 +86,7 @@ function Qualification({ onNext, onPrevious }) {
             <FaBuilding className="icon-qual" />
           </div>
 
-          <div className="input-box">
+          <div className="input-box5">
             <input
               type="number"
               placeholder="Passed out year"
@@ -97,10 +99,10 @@ function Qualification({ onNext, onPrevious }) {
             <FaCalendarAlt className="icon-qual" />
           </div>
 
-          <div className='form-actions' style={{ marginTop: '20px' }}>
-            <button onClick={onPrevious} className="form-btn">Previous</button>
-            <button onClick={handleNext} className="form-btn">Next</button>
-          </div>
+          
+            <button onClick={onPrevious} className="res2">Previous</button>
+            <button onClick={handleNext} className="res1">Next</button>
+          
         </form>
       </div>
     </div>

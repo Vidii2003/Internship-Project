@@ -150,7 +150,7 @@ const PersonalInformation = ({ onNext, onPrevious }) => {
   return (
     <div className='form-container per'>
       <div className='form-box'>
-        <h1 className="s1th1">Personal Information</h1>
+        <h2 className="s1th1">Personal Information</h2>
         <div className='form-group'>
           <div className="input-box">
             <select className="title" value={title} onChange={(e) => setTitle(e.target.value)}>
