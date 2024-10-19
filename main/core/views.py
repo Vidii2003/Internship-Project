@@ -9,7 +9,9 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-class MemberCreateView(APIView):
+
+
+class MemberCreateView(APIView):            #create a new member
     
     def post(self, request):
         serializer = MemberSerializer(data=request.data)
@@ -18,14 +20,14 @@ class MemberCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class MemberListView(APIView):
+class MemberListView(APIView):              #fetch all data for table view 
     def get(self, request):
         # Fetch all members
         members = Member.objects.all()
         serializer = MemberSerializer(members, many=True)  # Serialize all members
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-class MemberDetailView(APIView):
+class MemberDetailView(APIView):             #fetch single user data 
     def get(self, request):
         # Get the mobile number from the query parameters
         mobile_number = request.query_params.get('mobile_number')
@@ -42,7 +44,7 @@ class MemberDetailView(APIView):
             return Response({"error": "Mobile number is required."}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])
+@api_view(['POST'])             #fo user register 
 def account_setup(request):
     data = request.data
     username = data.get('mobile')  # Expecting mobile number here
@@ -68,7 +70,7 @@ def account_setup(request):
 
 
 
-def generate_member_id():
+def generate_member_id():               #ignore 
     last_profile = Profile.objects.order_by('id').last()
     if not last_profile:
         return "mem001"
@@ -76,10 +78,10 @@ def generate_member_id():
     last_id = last_profile.member_id
     new_id = int(last_id[3:]) + 1
     new_member_id = f"mem{new_id:03d}"
-    return new_member_id
+    return new_member_id 
 
 
-class RegisterView(APIView):
+class RegisterView(APIView):               #ignore
     def post(self, request):
         data = request.data
         print("Request data:", data)  # Debugging line
@@ -106,7 +108,7 @@ class RegisterView(APIView):
 
     
 
-@api_view(['POST'])
+@api_view(['POST'])                 #for user login and authentication
 def login_view(request):
     # Extract username, password, and member ID from request data
     username = request.data.get('username')  # Expecting mobile number as username
@@ -134,7 +136,7 @@ def login_view(request):
     
     return Response({"non_field_errors": ["Invalid credentials: Incorrect username or password."]}, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])  # Change to POST
+@api_view(['POST'])  
 def member_detail(request):
     # Get mobile number from the request body
     mobile_number = request.data.get('mobile_number')  # Expecting JSON with this key

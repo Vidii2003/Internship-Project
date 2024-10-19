@@ -10,7 +10,46 @@ from .utils import generate_member_id
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
-        fields = '__all__'  
+        fields = [
+            'title',
+            'firstName',
+            'middleName',
+            'lastName',
+            'fatherName',
+            'motherName',
+            'spouseName',
+            'mobile1',
+            'mobile2',
+            'dateOfBirth',
+            'gender',
+            'bloodGroup',
+            'emailId',
+            'currentAddress1',
+            'currentAddress2',
+            'currentCity',
+            'currentDistrict',
+            'currentState',
+            'currentCountry',
+            'currentPinCode',
+            'permanentAddress1',
+            'permanentAddress2',
+            'permanentCity',
+            'permanentDistrict',
+            'permanentState',
+            'permanentCountry',
+            'permanentPinCode',
+            'highestQualification',
+            'instituteName',
+            'stream',
+            'passedOutYear',
+            'skills',
+            'jobCategory',
+            'companyName',
+            'jobDesignation',
+            'companyLocation',
+            'annualIncome',
+            'role',
+        ]
 
 class MemberSummarySerializer(serializers.ModelSerializer):
     class Meta:
