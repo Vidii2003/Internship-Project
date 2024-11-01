@@ -10,19 +10,21 @@
   width: 90px;
   background: transparent; /* Set background to transparent */
   overflow: hidden;
+  color:#000000;
   transition: 1s;
 }
 
 .Navi:hover {
   width: 280px;
   background: linear-gradient(45deg, rgba(255, 165, 0, 1), rgba(255, 223, 0, 1));
+  color:#000000;
   transition: 1s;
 }
 
 .Navi #a {
   display: flex;
   align-items: center;
-  color: white; /* Set font color to white */
+  color:#000000; /* Set font color to white */
   text-decoration: none;
   padding: 10px;
 }
@@ -46,7 +48,7 @@
   padding-left: 15px;
   font-size: 18px;
   text-transform: uppercase;
-  color: white; /* Set logo text color to white */
+  color:#000000; /* Set logo text color to white */
 }
 
 /* Adjusting nav-item visibility */
@@ -65,7 +67,7 @@
 
 /* Styles for nav items */
 .nav-item1 {
-  color: white; /* Set nav item text color to white */
+  color: rgb(0, 0, 0); /* Set nav item text color to white */
 }
 
 .logout {
@@ -97,7 +99,7 @@
   position: relative;
   width: 280px;
   font-size: 14px;
-  color: rgb(85, 83, 83);
+  color: rgb(0, 0, 0);
   display: table;
   padding: 10px;
 }
@@ -122,7 +124,7 @@
 }
 
 #a:hover i {
-  color: #34AF6D;
+  color: #000000;
   transition: 0.5s;
 }
 
@@ -138,7 +140,7 @@
   backdrop-filter: blur(35px);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  color: #fff;
+  color: #000000;
 }
 
 .ul {
@@ -197,6 +199,7 @@
   background: #fff;
   text-align: center;
   border-radius: 10px;
+  color:#000000;
   padding: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
@@ -230,6 +233,7 @@
 .users td {
   font-size: 14px;
   padding-right: 15px;
+  color:#000000;
 }
 
 .users .card button {
@@ -244,7 +248,7 @@
 
 .users .card button:hover {
   background: #4AD489;
-  color: #fff;
+  color: #000000;
   transition: 0.5s;
 }
 
@@ -255,6 +259,7 @@
   backdrop-filter: blur(10px); /* Blur effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shading effect */
   border-radius: 8px;
+  color:#000000;
 }
 
 th, td {
@@ -262,15 +267,17 @@ th, td {
   text-align: left; /* Align text to the left */
   background-color: rgba(255, 255, 255, 0.3); /* Transparent background for cells */
   backdrop-filter: blur(10px); /* Consistent blur inside the table */
+  color:#000000;
 }
 
 th {
   background-color: rgba(255, 237, 101, 0.8); /* Semi-transparent header background */
-  color: #333; /* Darker text color for contrast */
+  color: #000000; /* Darker text color for contrast */
 }
 
 td {
   background-color: rgba(255, 255, 255, 0.2); /* Transparent background for data cells */
+  color:#000000;
 }
 
 .container {
@@ -279,6 +286,7 @@ td {
   border-radius: 10px;
   backdrop-filter: blur(10px); /* Apply blur to the entire container */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow for the container */
+  color:#000000;
 }
 
 /* Attendance List section */
@@ -292,6 +300,7 @@ td {
   padding: 10px;
   margin-top: 10px;
   background: #fff;
+  color:#000000;
   border-radius: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
@@ -302,11 +311,12 @@ td {
   font-size: 15px;
   min-width: 100%;
   overflow: hidden;
+  color:#000000;
   border-radius: 5px 5px 0 0;
 }
 
 table thead tr {
-  color: #fff;
+  color: #000000;
   background: #34AF6D;
   text-align: left;
   font-weight: bold;
@@ -315,14 +325,17 @@ table thead tr {
 .table th,
 .table td {
   padding: 12px 15px;
+  color:#000000;
 }
 
 .table tbody tr {
   border-bottom: 1px solid #ddd;
+  color:#000000;
 }
 
 .table tbody tr:nth-of-type(odd) {
   background: #f3f3f3;
+  color:#000000;
 }
 
 .table tbody tr.active {
@@ -331,7 +344,7 @@ table thead tr {
 }
 
 .table tbody tr:last-of-type {
-  border-bottom: 2px solid #4AD489;
+  border-bottom: 2px solid #000000;
 }
 
 .button-container {
@@ -352,7 +365,7 @@ table thead tr {
 .button-container .btn-primary {
   background-color: #ffc266; /* Adjusted to a color from the logo */
   border-color: #34AF6D; /* Same as background */
-  color: white;
+  color: rgb(0, 0, 0);
   transition: background-color 0.3s ease;
 }
 
@@ -364,7 +377,7 @@ table thead tr {
 .button-container .btn-success {
   background-color: #ffc266; /* A color inspired by the logo */
   border-color: #218838; /* Same as background */
-  color: white;
+  color: rgb(0, 0, 0);
   transition: background-color 0.3s ease;
 }
 

@@ -12,7 +12,7 @@
     backdrop-filter: blur(35px);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: #000000;
     align-items: center;
     overflow: auto;
     transition: height 0.2s ease;
@@ -27,7 +27,7 @@
 
 h3 {
     text-align: center;
-    color: #fff;
+    color: #000000;
     font-size: 28px;
     margin-bottom: 20px;
 }
@@ -42,16 +42,16 @@ h3 {
 .input-container4 input {
     width: 100%;
     padding: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 40px;
     background: transparent;
-    color: #fff;
+    color: #000000;
     box-sizing: border-box;
     font-size: 16px;
 }
 
 .input-container4 input::placeholder {
-    color: #fff;
+    color: #000000;
 }
 
 
@@ -66,16 +66,12 @@ h3 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     font-weight: 700;
     margin-left:10%;
     width:35%;
     padding: 15px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
     font-weight: bold;
-    color: #333;
     transition: background-color 0.3s ease;
 }
 .res2{
@@ -89,23 +85,19 @@ h3 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     font-weight: 700;
     margin-left:10%;
     width:35%;
     padding: 15px 20px;
     background-color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
     font-weight: bold;
-    color: #333;
     transition: background-color 0.3s ease;
 }
 .profh1{
     text-align: center;
     font-size: 36px;
-    color: #fff;
+    color: #000000;
     margin-bottom: 30px;
     margin-top: 2%;
 }
@@ -114,7 +106,7 @@ h3 {
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #fff;
+    color: #000000;
     font-size: 20px;
 }
 

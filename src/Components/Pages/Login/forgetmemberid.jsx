@@ -14,7 +14,7 @@ const PhoneInputWrapper = styled.div`
     height: 50px;
     margin: 30px 0;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, .1);
+    border: 2px solid rgba(0, 0, 0, .1);
     border-radius: 40px;
   }
 
@@ -26,7 +26,7 @@ const PhoneInputWrapper = styled.div`
     background: transparent;
     border: none;
     font-size: 20px;
-    border-right: 2px solid rgba(255, 255, 255, .1);
+    border-right: 2px solid rgba(0, 0, 0, .1);
     border-radius: 40px 0 0 40px;
     padding: 0 10px;
   }
@@ -45,7 +45,7 @@ const PhoneInputWrapper = styled.div`
     height: 100%;
     padding-left: 60px;
     background: transparent;
-    color: #fff;
+    color: #000000;
     border: none;
     outline: none;
     font-size: 16px;
@@ -57,7 +57,7 @@ const PhoneInputWrapper = styled.div`
     background: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: #000000;
     padding: 10px 20px 10px 70px;
     font-size: 20px;
     right: 10px;
@@ -66,7 +66,7 @@ const PhoneInputWrapper = styled.div`
   }
 
   .react-tel-input input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
     margin-bottom: 20px;
   }
   

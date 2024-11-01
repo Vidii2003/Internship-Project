@@ -56,8 +56,8 @@ form .input-box{
 
 .ph1{
     position: absolute;
-    left: 365px;
-    top: 167px;
+    left: 366px;
+    top: 138px;
     translate: 0 -50%;
     font-size: 25px;
 }
@@ -88,10 +88,10 @@ form .input-box{
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .1);
+    border: 2px solid rgba(0, 0, 0, .1);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     padding: 20px 45px 20px 20px;
 }
 /*

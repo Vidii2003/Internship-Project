@@ -5,12 +5,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color:#000000;
 }
 
 body {
     font-family: 'Helvetica', sans-serif; /* Adjust as needed */
-    background-color: #f0f0f0; /* Background color for the body */
-    color: #333; /* Default text color */
+    background-color: #ffffff; /* Background color for the body */
+    color: #000000; /* Default text color */
 }
 
 /* Wrapper Styles */
@@ -27,7 +28,7 @@ body {
     backdrop-filter: blur(35px);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: #000000;
     display: flex;
     align-items: center;
     transition: height 0.2s ease;
@@ -46,6 +47,7 @@ body {
 form h1 {
     font-size: 36px;
     text-align: center;
+    color:#000000;
 }
 
 /* Input Box Styles */
@@ -62,15 +64,15 @@ form h1 {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #000000;
 }
 
 /* Icon Styles */
@@ -100,12 +102,12 @@ form .remember-forgot {
 }
 
 .remember-forgot label input {
-    accent-color: #fff;
+    accent-color: #000000;
     margin-right: 4px;
 }
 
 .remember-forgot a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -128,7 +130,7 @@ form .remember-forgot {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     font-weight: 700;
 }
 
@@ -140,7 +142,7 @@ form .register-link {
 }
 
 .register-link p a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     font-weight: 600;
 }

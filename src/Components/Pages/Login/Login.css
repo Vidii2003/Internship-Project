@@ -11,7 +11,7 @@
     backdrop-filter: blur(35px);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: #000000;
     display: flex;
     align-items: center;
     transition: height .2s ease;
@@ -48,15 +48,15 @@ form .input-box{
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder{
-    color: #fff;
+    color: #000000;
 }
 
 .input-box .icon{
@@ -107,12 +107,12 @@ form .remember-forgot{
 }
 
 .remember-forgot label input{
-    accent-color: #fff;
+    accent-color: #000000;
     margin-right: 4px;
 }
 
 .remember-forgot a{
-    color: #fff;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -134,7 +134,7 @@ form .remember-forgot{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     font-weight: 700;
 }
 
@@ -145,7 +145,7 @@ form .register-link{
 }
 
 .register-link p a{
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     font-weight: 600;
 }
