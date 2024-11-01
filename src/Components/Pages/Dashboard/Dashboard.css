@@ -15,6 +15,7 @@
 
 .Navi:hover {
   width: 280px;
+  background: linear-gradient(45deg, rgba(255, 165, 0, 1), rgba(255, 223, 0, 1));
   transition: 1s;
 }
 
@@ -132,7 +133,7 @@
 
 .container {
   display: flex;
-  background: transparent;
+  background: linear-gradient(45deg, rgba(255, 165, 0, 1), rgba(255, 223, 0, 1));
   border: 2px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(35px);
   border-radius: 10px;
@@ -264,7 +265,7 @@ th, td {
 }
 
 th {
-  background-color: rgba(255, 165, 0, 0.8); /* Semi-transparent header background */
+  background-color: rgba(255, 237, 101, 0.8); /* Semi-transparent header background */
   color: #333; /* Darker text color for contrast */
 }
 
@@ -349,25 +350,25 @@ table thead tr {
 }
 
 .button-container .btn-primary {
-  background-color: #e48902; /* Adjusted to a color from the logo */
+  background-color: #ffc266; /* Adjusted to a color from the logo */
   border-color: #34AF6D; /* Same as background */
   color: white;
   transition: background-color 0.3s ease;
 }
 
 .button-container .btn-primary:hover {
-  background-color: #c27500de; /* Darker shade for hover effect */
+  background-color: rgba(255, 164, 28, 0.871); /* Darker shade for hover effect */
   border-color: #218838; /* Darker border on hover */
 }
 
 .button-container .btn-success {
-  background-color: #ff9900; /* A color inspired by the logo */
+  background-color: #ffc266; /* A color inspired by the logo */
   border-color: #218838; /* Same as background */
   color: white;
   transition: background-color 0.3s ease;
 }
 
 .button-container .btn-success:hover {
-  background-color: #e68a00; /* Darker shade for hover effect */
+  background-color: #ff9900; /* Darker shade for hover effect */
   border-color: #218838; /* Darker border on hover */
 }

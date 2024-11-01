@@ -5,11 +5,12 @@ import 'react-phone-input-2/lib/style.css';
 import styled from 'styled-components';
 import { GiRotaryPhone } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const PhoneInputWrapper = styled.div`
   .react-tel-input {
     position: relative;
-    width: 100%; /* Adjust width to 100% */
+    width: 100%;
     height: 50px;
     margin: 30px 0;
     background: transparent;
@@ -26,7 +27,7 @@ const PhoneInputWrapper = styled.div`
     border: none;
     font-size: 20px;
     border-right: 2px solid rgba(255, 255, 255, .1);
-    border-radius: 40px 0 0 40px; /* Rounded left side */
+    border-radius: 40px 0 0 40px;
     padding: 0 10px;
   }
 
@@ -42,7 +43,7 @@ const PhoneInputWrapper = styled.div`
   .react-tel-input .form-control {
     width: 100%;
     height: 100%;
-    padding-left: 60px; /* Make space for the flag dropdown */
+    padding-left: 60px;
     background: transparent;
     color: #fff;
     border: none;
@@ -57,7 +58,7 @@ const PhoneInputWrapper = styled.div`
     border: none;
     outline: none;
     color: #fff;
-    padding: 10px 20px 10px 70px; /* Padding for flag dropdown space */
+    padding: 10px 20px 10px 70px;
     font-size: 20px;
     right: 10px;
     bottom: 5px;
@@ -96,7 +97,7 @@ const Forgotmemberid = () => {
         const { mobilenumber } = input;
 
         // Mobile number validation (7-15 digits)
-        const phoneNumber = mobilenumber.replace(/[^0-9]/g, ''); // Remove any non-numeric characters
+        const phoneNumber = mobilenumber.replace(/[^0-9]/g, '');
         if (phoneNumber.length < 7 || phoneNumber.length > 15) {
             isValid = false;
             errors.mobilenumber = "Please provide a valid mobile number.";
@@ -106,20 +107,35 @@ const Forgotmemberid = () => {
         return isValid;
     };
 
-    const handlememberid = (e) => {
-        e.preventDefault();
-        if (validate()) {
-            // Display the alert and navigate after the alert is acknowledged
-            alert("Your Member ID is ");
-            setInput({
-                mobilenumber: ''
-            });
-            setAction('');
+    const [loading, setLoading] = useState(false); // Add loading state
 
-            // Navigate to the login page after alert
-            navigate('/'); // Replace '/' with the path to your login page
-        }
-    };
+    const handlememberid = async (e) => {
+      e.preventDefault();
+      if (validate()) {
+          console.log("Payload:", { mobilenumber: input.mobilenumber });  // Log the payload
+          try {
+              const response = await axios.post('http://localhost:8000/api/retrieve-member-id/', {
+                  mobilenumber: input.mobilenumber,
+              });
+              // ... handle the response
+          } catch (error) {
+              if (error.response) {
+                  console.log("Error Response:", error.response.data);  // Log the response data
+                  if (error.response.status === 404) {
+                      setErrors({ mobilenumber: "No user found with this mobile number." });
+                  } else {
+                      alert("An error occurred. Please try again later.");
+                  }
+              } else {
+                  alert("An error occurred. Please try again later.");
+              }
+          
+              // ... handle error
+          }
+      }
+  };
+  
+
 
     return (
         <div className={`wrapper ${action}`}>
@@ -129,17 +145,17 @@ const Forgotmemberid = () => {
                     <PhoneInputWrapper>
                         <PhoneInput
                             className="phone"
-                            country={'in'}  // Default country (India)
+                            country={'in'}
                             value={input.mobilenumber}
-                            onChange={handlePhoneChange}  // Update the input value
+                            onChange={handlePhoneChange}
                             placeholder="Mobile Number"
-                            enableAreaCodes={true}  // Enable area codes
-                            disableCountryCode={false}  // Ensure country code is displayed
-                            disableDropdown={false}  // Allow user to select the country code via dropdown
-                            countryCodeEditable={false}  // Prevent country code from being editable
+                            enableAreaCodes={true}
+                            disableCountryCode={false}
+                            disableDropdown={false}
+                            countryCodeEditable={false}
                             inputProps={{
                                 name: 'mobilenumber',
-                                required: true,  // Make the mobile number field required
+                                required: true,
                                 autoFocus: true
                             }}
                         />

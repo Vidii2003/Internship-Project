@@ -53,9 +53,30 @@ const AddressForm = ({ onNext, onPrevious }) => {
   };
 
   const handleNext = () => {
-    // Add your validation and navigation logic here
-    onNext();
-  };
+    onNext({ // Call the onNext function passed as prop
+      email: email, // Pass the email
+      commAddress: { // Pass the communication address as an object
+        doorNo: commDoorNo,
+        streetName: commStreetName,
+        area: commArea,
+        city: commCity,
+        district: commDistrict,
+        state: commState,
+        country: commCountry,
+        pincode: commPincode,
+      },
+      permAddress: { // Pass the permanent address as an object
+        doorNo: permDoorNo,
+        streetName: permStreetName,
+        area: permArea,
+        city: permCity,
+        district: permDistrict,
+        state: permState,
+        country: permCountry,
+        pincode: permPincode,
+      }
+    }); // Navigate to next page
+  }
 
   return (
     <div className='form-container add'>

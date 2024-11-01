@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom"; 
 import Logo from '../../Assets/Logo.jpg';
-import "./Dashboard.css"; // Assuming the same CSS file
+import "./Dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMenorah,
@@ -11,124 +13,56 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Dashboard() {
+const Dashboard = () => {
+  const location = useLocation();
+  const { username } = location.state || {};  
+
+  const [memberData, setMemberData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("Username (mobile number):", username); 
+    const fetchMemberData = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/api/member_detail/', {
+          mobile_number: username  
+        });
+        setMemberData(response.data); 
+      } catch (error) {
+        if (error.response && error.response.data) {
+          setError(error.response.data.error); 
+        } else {
+          setError("An error occurred. Please try again.");
+        }
+      }
+    };
+
+    if (username) {
+      fetchMemberData();  
+    }
+  }, [username]);
+
   const [activeSection, setActiveSection] = useState("dashboard");
   const [isEditing, setIsEditing] = useState(false);
 
-  // Dashboard state
-  const [dashboardData, setDashboardData] = useState({
-    id: "01",
-    name: "John Doe",  // This will update with firstName and lastName
-    JobTitle: "Software Developer",
-    Mobilenumber:"9876543210",
-    address: "123 Main St, Cityville, ST, 12345",
-  });
-
-  // Personal Information state
-  const [personalInfo, setPersonalInfo] = useState({
-    id: "01",
-    firstName: "John",
-    lastName: "Doe",
-    motherName: "Alisa",
-    fatherName: "Jacob",
-    spouseName: "Lisa",
-    dob: "22-02-1988",
-    gender: "Male",
-    bloodGroup: "O+",
-  });
-
-  // Contact Details state
-  const [contactDetails, setContactDetails] = useState({
-    id: "01",
-    name: "John Doe",
-    Mobilenumber:"9876543210",
-    email: "Johndoe21@gmail.com",
-    address: "123 Main St, Cityville, ST, 12345",
-    city: "Nagercoil",
-    district: "Kanyakumari",
-    state: "Tamilnadu",
-  });
-
-  // Qualification Details state
-  const [qualificationDetails, setQualificationDetails] = useState({
-    id: "01",
-    maxQualification: "UG or PG",
-    major: "Computer",
-    institution: "College or University",
-  });
-
-  // Professional Details state
-  const [professionalDetails, setProfessionalDetails] = useState({
-    id: "01",
-    JobTitle: "Software Developer",
-    companyName: "TCS",
-    responsibilities: "Developed web applications, optimized databases",
-    location: "USA",
-    employmentType: "FULLTIME",
-  });
-
-  const showSection = (sectionId) => {
-    setActiveSection(sectionId);
-    setIsEditing(false); // Reset editing state on section change
-  };
-
   const handleEdit = () => {
-    setIsEditing(true); // Enable editing mode
+    setIsEditing(true); 
   };
 
   const handleUpdate = () => {
-    // Update the dashboardData with first and last name
-    const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
-    setDashboardData((prev) => ({
-      ...prev,
-      name: fullName,
-    }));
-
-    // Update other sections with the changes from dashboard
-    setPersonalInfo((prev) => ({
-      ...prev,
-      firstName: personalInfo.firstName,
-      lastName: personalInfo.lastName,
-    }));
-
-    setContactDetails((prev) => ({
-      ...prev,
-      name: fullName,  // Updating name in contact details
-    }));
-
     alert("Details updated successfully!");
-
-    // Exit editing mode
     setIsEditing(false);
   };
 
-  const handleChange = (section, field, value) => {
-    if (section === "dashboard") {
-      setDashboardData((prev) => ({ ...prev, [field]: value }));
-      // If first name or last name is changed, update personal info and contact details
-      if (field === "name") {
-        const [firstName, lastName] = value.split(" ");
-        setPersonalInfo((prev) => ({ ...prev, firstName, lastName }));
-        setContactDetails((prev) => ({ ...prev, name: value }));
-      }
-    } else if (section === "personal-info") {
-      setPersonalInfo((prev) => ({ ...prev, [field]: value }));
-      // Update dashboard name when first or last name is changed
-      if (field === "firstName" || field === "lastName") {
-        const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
-        setDashboardData((prev) => ({ ...prev, name: fullName }));
-        setContactDetails((prev) => ({ ...prev, name: fullName }));
-      }
-    } else if (section === "contact-details") {
-      setContactDetails((prev) => ({ ...prev, [field]: value }));
-    } else if (section === "qualification-details") {
-      setQualificationDetails((prev) => ({ ...prev, [field]: value }));
-    } else if (section === "professional-details") {
-      setProfessionalDetails((prev) => ({ ...prev, [field]: value }));
-    }
+  const handleChange = (section, key, value) => {
+    setMemberData(prevData => ({
+      ...prevData,
+      [key]: value
+    }));
   };
 
   const renderTable = (data, section) => {
+    if (!data) return null;
     return Object.keys(data).map((key) => (
       <tr key={key}>
         <th>{key.charAt(0).toUpperCase() + key.slice(1)}</th>
@@ -153,35 +87,35 @@ function Dashboard() {
         <ul className="ul">
           <li>
             <a href="#" id="a" className="logo">
-              <span className="nav-item1">JOHN DOE</span>
+              <span className="nav-item1">{memberData ? memberData.first_name : "Loading..."}</span>
             </a>
           </li>
           <li>
-            <a href="#" id="a"  onClick={() => showSection("dashboard")}>
+            <a href="#" id="a" onClick={() => setActiveSection("dashboard")}>
               <FontAwesomeIcon icon={faMenorah} />
               <span className="nav-item">Dashboard</span>
             </a>
           </li>
           <li>
-            <a href="#" id="a" onClick={() => showSection("personal-info")}>
+            <a href="#" id="a" onClick={() => setActiveSection("personal-info")}>
               <FontAwesomeIcon icon={faIdCard} />
               <span className="nav-item">Personal Information</span>
             </a>
           </li>
           <li>
-            <a href="#" id="a" onClick={() => showSection("contact-details")}>
+            <a href="#" id="a" onClick={() => setActiveSection("contact-details")}>
               <FontAwesomeIcon icon={faAddressBook} />
               <span className="nav-item">Contact Details</span>
             </a>
           </li>
           <li>
-            <a href="#" id="a" onClick={() => showSection("qualification-details")}>
+            <a href="#" id="a" onClick={() => setActiveSection("qualification-details")}>
               <FontAwesomeIcon icon={faUserGraduate} />
               <span className="nav-item">Qualification Details</span>
             </a>
           </li>
           <li>
-            <a href="#" id="a" onClick={() => showSection("professional-details")}>
+            <a href="#" id="a" onClick={() => setActiveSection("professional-details")}>
               <FontAwesomeIcon icon={faBriefcase} />
               <span className="nav-item">Professional Details</span>
             </a>
@@ -197,14 +131,14 @@ function Dashboard() {
 
       <section className="main">
         <div className="main-top">
-          <a href="#" id="a" >
+          <a href="#" id="a">
             <img src={Logo} alt="Logo" className="custom-logo" />
           </a>
-          <h1 style={{ paddingLeft: "180px" }}>JOHN DOE</h1>
+          <h1 style={{ paddingLeft: "180px" }}>{memberData ? memberData.first_name : "Loading..."}</h1>
         </div>
 
         <div className="section-content">
-          {activeSection === "dashboard" && (
+          {activeSection === "dashboard" && memberData && (
             <div id="dashboard">
               <h2 className="text-center">DASHBOARD</h2>
               <div className="container mt-5" style={{ maxWidth: "600px" }}>
@@ -212,159 +146,147 @@ function Dashboard() {
                   <tbody>
                     <tr>
                       <th>Name</th>
-                      <td>
-                        {isEditing ? (
-                          <input
-                            type="text"
-                            value={dashboardData.name}
-                            onChange={(e) => handleChange("dashboard", "name", e.target.value)}
-                          />
-                        ) : (
-                          dashboardData.name
-                        )}
-                      </td>
+                      <td>{memberData.first_name} {memberData.last_name}</td>
                     </tr>
                     <tr>
                       <th>Job Title</th>
-                      <td>
-                        {isEditing ? (
-                          <input
-                            type="text"
-                            value={dashboardData.JobTitle}
-                            onChange={(e) => handleChange("dashboard", "JobTitle", e.target.value)}
-                          />
-                        ) : (
-                          dashboardData.JobTitle
-                        )}
-                      </td>
+                      <td>{memberData.job_designation || "Not Available"}</td>
                     </tr>
                     <tr>
-                      <th>Mobilenumber</th>
-                      <td>
-                        {isEditing ? (
-                          <input
-                            type="text"
-                            value={dashboardData.Mobilenumber}
-                            onChange={(e) => handleChange("dashboard", "Mobilenumber", e.target.value)}
-                          />
-                        ) : (
-                          dashboardData.Mobilenumber
-                        )}
-                      </td>
+                      <th>Mobile Number</th>
+                      <td>{memberData.mobile_1}</td>
                     </tr>
                     <tr>
                       <th>Address</th>
-                      <td>
-                        {isEditing ? (
-                          <input
-                            type="text"
-                            value={dashboardData.address}
-                            onChange={(e) => handleChange("dashboard", "address", e.target.value)}
-                          />
-                        ) : (
-                          dashboardData.address
-                        )}
-                      </td>
+                      <td>{memberData.current_address_1}, {memberData.current_city}</td>
                     </tr>
                   </tbody>
                 </table>
                 <div className="button-container mt-3">
                   {!isEditing ? (
-                    <button className="btn btn-primary" onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                   ) : (
-                    <button className="btn btn-success" onClick={handleUpdate}>
-                      Update
-                    </button>
+                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                   )}
                 </div>
               </div>
             </div>
           )}
 
-          {activeSection === "personal-info" && (
+          {activeSection === "personal-info" && memberData && (
             <div id="personal-info">
               <h2 className="text-center">Personal Information</h2>
               <div className="container mt-5">
                 <table className="table-bordered border-primary">
-                  <tbody>{renderTable(personalInfo, "personal-info")}</tbody>
+                  <tbody>
+                    {renderTable({
+                      title:memberData.title,
+                      first_name: memberData.first_name,
+                      middle_name:memberData.middle_name,
+                      last_name: memberData.last_name,
+                      mother_name: memberData.mother_name,
+                      father_name: memberData.father_name,
+                      spouse_name: memberData.spouse_name,
+                      mobile_2:memberData.mobile_2,
+                      date_of_birth: memberData.date_of_birth,
+                      gender: memberData.gender,
+                      blood_group: memberData.blood_group,
+
+                    }, "personal-info")}
+                  </tbody>
                 </table>
                 <div className="button-container mt-3">
                   {!isEditing ? (
-                    <button className="btn btn-primary" onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                   ) : (
-                    <button className="btn btn-success" onClick={handleUpdate}>
-                      Update
-                    </button>
+                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                   )}
                 </div>
               </div>
             </div>
           )}
 
-          {activeSection === "contact-details" && (
+          {activeSection === "contact-details" && memberData && (
             <div id="contact-details">
               <h2 className="text-center">Contact Details</h2>
               <div className="container mt-5">
                 <table className="table-bordered border-primary">
-                  <tbody>{renderTable(contactDetails, "contact-details")}</tbody>
+                  <tbody>
+                    {renderTable({
+                      email_id: memberData.email_id,
+                      current_address_1: memberData.current_address_1,
+                      current_address_2: memberData.current_address_2,
+                      current_city: memberData.current_city,
+                      current_state: memberData.current_state,
+                      current_country: memberData.current_country,
+                      current_pin_code:memberData.current_pin_code,
+                      permanent_address_1: memberData.current_address_1,
+                      permanent_address_2: memberData.current_address_2,
+                      permanent_city: memberData.current_city,
+                      permanent_state: memberData.current_state,
+                      permanent_country: memberData.current_country,
+                      permanent_pin_code:memberData.current_pin_code,
+                      
+                    }, "contact-details")}
+                  </tbody>
                 </table>
                 <div className="button-container mt-3">
                   {!isEditing ? (
-                    <button className="btn btn-primary" onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                   ) : (
-                    <button className="btn btn-success" onClick={handleUpdate}>
-                      Update
-                    </button>
+                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                   )}
                 </div>
               </div>
             </div>
           )}
 
-          {activeSection === "qualification-details" && (
+          {activeSection === "qualification-details" && memberData && (
             <div id="qualification-details">
               <h2 className="text-center">Qualification Details</h2>
               <div className="container mt-5">
                 <table className="table-bordered border-primary">
-                  <tbody>{renderTable(qualificationDetails, "qualification-details")}</tbody>
+                  <tbody>
+                    {renderTable({
+                      highest_qualification: memberData.highest_qualification,
+                      institute_name: memberData.institute_name,
+                      stream: memberData.stream,
+                      passed_out_year: memberData.passed_out_year,
+                      skills: memberData.skills
+                    }, "qualification-details")}
+                  </tbody>
                 </table>
                 <div className="button-container mt-3">
                   {!isEditing ? (
-                    <button className="btn btn-primary" onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                   ) : (
-                    <button className="btn btn-success" onClick={handleUpdate}>
-                      Update
-                    </button>
+                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                   )}
                 </div>
               </div>
             </div>
           )}
 
-          {activeSection === "professional-details" && (
+          {activeSection === "professional-details" && memberData && (
             <div id="professional-details">
               <h2 className="text-center">Professional Details</h2>
               <div className="container mt-5">
                 <table className="table-bordered border-primary">
-                  <tbody>{renderTable(professionalDetails, "professional-details")}</tbody>
+                  <tbody>
+                    {renderTable({
+                      job_category: memberData.job_category,
+                      company_name: memberData.company_name,
+                      job_designation: memberData.job_designation,
+                      company_location: memberData.company_location,
+                      role: memberData.role
+                    }, "professional-details")}
+                  </tbody>
                 </table>
                 <div className="button-container mt-3">
                   {!isEditing ? (
-                    <button className="btn btn-primary" onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
                   ) : (
-                    <button className="btn btn-success" onClick={handleUpdate}>
-                      Update
-                    </button>
+                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                   )}
                 </div>
               </div>
@@ -374,6 +296,6 @@ function Dashboard() {
       </section>
     </div>
   );
-}
+};
 
 export default Dashboard;
