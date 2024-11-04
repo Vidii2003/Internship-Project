@@ -1,4 +1,4 @@
-
+from collections import OrderedDict
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status,generics
@@ -24,7 +24,7 @@ class MemberListView(APIView):              #fetch all data for table view
     def get(self, request):
         # Fetch all members
         members = Member.objects.all()
-        serializer = MemberSerializer(members, many=True)  # Serialize all members
+        serializer = MemberSerializers(members, many=True)  # Serialize all members
         return Response(serializer.data, status=status.HTTP_200_OK)
     
 class MemberDetailView(APIView):             #fetch single user data 
@@ -44,29 +44,34 @@ class MemberDetailView(APIView):             #fetch single user data
             return Response({"error": "Mobile number is required."}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])             #fo user register 
+@api_view(['POST'])  # For user registration
 def account_setup(request):
     data = request.data
     username = data.get('mobile')  # Expecting mobile number here
     password = data.get('password')
 
-    # Validate the username (mobile number)
-    if username is None or len(str(username)) < 10:  # Convert to string for length check
+    # Validate the mobile number (username)
+    if not username or len(str(username)) < 10:
         return Response({'error': 'Invalid mobile number'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Check if the user already exists
+    if User.objects.filter(username=username).exists():
+        return Response({'error': 'User with this mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Use 'username' when creating the serializer
-    data['username'] = username  # Add mobile number to the username field
+    # Add mobile number to the username field
+    data['username'] = username  
 
     serializer = UserRegistrationSerializer(data=data)
     if serializer.is_valid():
         user = serializer.save()
         return Response({
             "message": "User registered successfully.",
-            "mobile": username,  # Include username (mobile number) in the response
-            "member_id": user.profile.member_id  # Access member ID from the profile
+            "mobile": username,
+            "member_id": user.profile.member_id
         }, status=status.HTTP_201_CREATED)
-
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Return serializer errors if data is not valid
+    return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -108,7 +113,7 @@ class RegisterView(APIView):               #ignore
 
     
 
-@api_view(['POST'])                 #for user login and authentication
+@api_view(['POST'])  # For user login and authentication
 def login_view(request):
     # Extract username, password, and member ID from request data
     username = request.data.get('username')  # Expecting mobile number as username
@@ -116,27 +121,43 @@ def login_view(request):
     member_id = request.data.get('member_id')
 
     # Validate the input
-    if not username or not password or not member_id:
-        return Response({"error": "Username, password, and member ID are required."}, status=status.HTTP_400_BAD_REQUEST)
+    errors = {}
+    if not username:
+        errors["username"] = ["Mobile number is required."]
+    if not password:
+        errors["password"] = ["Password is required."]
+    if not member_id:
+        errors["member_id"] = ["Member ID is required."]
+    if errors:
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Attempt to retrieve the profile using the member ID
+    # Check if the username exists in the User table
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response({"username": ["This mobile number is not registered."]}, status=status.HTTP_400_BAD_REQUEST)
+
+    # Retrieve the profile using the member ID and check for member ID mismatch
     try:
         profile = Profile.objects.get(member_id=member_id)
+        if profile.user != user:
+            return Response({"member_id": ["Member ID does not match the provided username."]}, status=status.HTTP_400_BAD_REQUEST)
     except Profile.DoesNotExist:
-        return Response({"error": "Invalid member ID."}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"member_id": ["Invalid member ID."]}, status=status.HTTP_400_BAD_REQUEST)
 
     # Authenticate the user
     user = authenticate(username=username, password=password)
-    if user is not None and profile.user == user:
+    if user is not None:
         return Response({
             "message": "Login successful.",
             "username": username,  # Include username (mobile number) in the response
             "member_id": member_id  # Include member ID in the response
         }, status=status.HTTP_200_OK)
     
+    # If authentication fails
     return Response({"non_field_errors": ["Invalid credentials: Incorrect username or password."]}, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])  
+@api_view(['POST'])
 def member_detail(request):
     # Get mobile number from the request body
     mobile_number = request.data.get('mobile_number')  # Expecting JSON with this key
@@ -145,11 +166,21 @@ def member_detail(request):
         return Response({'error': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
     # Fetch the member using the mobile number
-    member = Member.objects.filter(mobileNumber1=mobile_number).first()
+    member = Member.objects.filter(mobile_1=mobile_number).first()
 
     if not member:
         return Response({'error': 'Member not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     # Serialize the member data
     serializer = MemberSerializer(member)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    # Create an OrderedDict to make sure 'id' is the first field
+    modified_data = OrderedDict()
+    modified_data['id'] = 1  # Set the 'id' field to a static value, e.g., 1
+
+    # Add the rest of the serialized data after 'id'
+    for key, value in serializer.data.items():
+        modified_data[key] = value
+
+    # Return the modified data with 'id' as the first field
+    return Response(modified_data, status=status.HTTP_200_OK)
