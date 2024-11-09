@@ -188,7 +188,7 @@ const Dashboard = () => {
                       father_name: memberData.father_name,
                       spouse_name: memberData.spouse_name,
                       mobile_2:memberData.mobile_2,
-                      date_of_birth: memberData.date_of_birth,
+                      date_of_birth: memberData.dob,
                       gender: memberData.gender,
                       blood_group: memberData.blood_group,
 

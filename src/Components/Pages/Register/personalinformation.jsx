@@ -3,6 +3,8 @@ import { FaPhone, FaTransgender } from 'react-icons/fa';
 import { BiSolidDonateBlood } from 'react-icons/bi';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './style.css';
 
 const titles = ["Mr", "Mrs", "Ms", "Dr"];
@@ -18,24 +20,17 @@ const PersonalInformation = ({ registeredMobile, onNext, onPrevious }) => {
   const [mobile1] = useState(registeredMobile); // Store the registered mobile number directly
   const [mobile2, setMobile2] = useState('');
   const [gender, setGender] = useState('');
-  const [day, setDay] = useState('');
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+  const [birthDate, setBirthDate] = useState(null); // Store date as a Date object
   const [bloodGroup, setBloodGroup] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [shareYear, setShareYear] = useState(true); // For the year-sharing option
-
-  // Days, months, and years arrays for dropdown
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
 
   // Validation function for mobile number
   const validateMobile = (mobile) => /^[0-9]{7,15}$/.test(mobile.replace(/^\+?\d{1,3}/, ''));
 
   const validateRequiredFields = () => {
     setErrorMessage('');
-    if (!firstName || !lastName || !fatherName || !motherName || !gender) {
+    if (!firstName || !lastName || !fatherName || !motherName || !gender || !birthDate) {
       setErrorMessage('Please fill all required fields.');
       return false;
     }
@@ -51,6 +46,22 @@ const PersonalInformation = ({ registeredMobile, onNext, onPrevious }) => {
     if (mobile1 === '+919994418225') role = 'moderator';
     else if (mobile1 === '+919876543210') role = 'admin';
 
+    console.log({
+      title,
+      firstName,
+      lastName,
+      middleName,
+      mobile1,
+      mobile2,
+      fatherName,
+      motherName,
+      spouseName,
+      gender,
+      role,
+      dob: shareYear ? birthDate.toISOString().split('T')[0] : `${birthDate.getMonth() + 1}-${birthDate.getDate()}`,
+      bloodGroup
+    });
+
     if (validateRequiredFields()) {
       onNext({
         title,
@@ -64,14 +75,13 @@ const PersonalInformation = ({ registeredMobile, onNext, onPrevious }) => {
         spouseName,
         gender,
         role,
-        dob: shareYear ? `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}` : `${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`,
+        dob: shareYear ? birthDate.toISOString().split('T')[0] : `${birthDate.getMonth() + 1}-${birthDate.getDate()}`,
         bloodGroup
       });
     }
   };
 
   return (
-    
     <div className='form-container'>
       <div className='form-box'>
         <h2>Personal Information</h2>
@@ -142,26 +152,15 @@ const PersonalInformation = ({ registeredMobile, onNext, onPrevious }) => {
 
           <div>
             <label>Date of Birth:<span className="required">*</span></label>
-            <div className="dob-selectors">
-              <select value={day} onChange={(e) => setDay(e.target.value)}>
-                <option value="">Day</option>
-                {days.map((d) => <option key={d} value={d}>{d}</option>)}
-              </select>
-              <select value={month} onChange={(e) => setMonth(e.target.value)}>
-                <option value="">Month</option>
-                {months.map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
-              {shareYear && (
-                <select value={year} onChange={(e) => setYear(e.target.value)}>
-                  <option value="">Year</option>
-                  {years.map((y) => <option key={y} value={y}>{y}</option>)}
-                </select>
-              )}
-            </div>
-            <label>
-              <input type="checkbox" checked={shareYear} onChange={(e) => setShareYear(e.target.checked)} />
-              Share my year of birth
-            </label>
+            <DatePicker
+              selected={birthDate}
+              onChange={(date) => setBirthDate(date)}
+              dateFormat="yyyy-MM-dd"
+              showYearDropdown
+              showMonthDropdown
+              placeholderText="Select your date of birth"
+              className="dob-picker"
+            />
           </div>
 
           <div>
@@ -190,7 +189,6 @@ const PersonalInformation = ({ registeredMobile, onNext, onPrevious }) => {
             </select>
             <BiSolidDonateBlood className="icon3" />
           </div>
-
         </div>
 
         <div className='form-navigation'>

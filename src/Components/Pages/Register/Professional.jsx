@@ -32,7 +32,7 @@ function Professional({ onNext, onPrevious, formData }) {
             blood_group: formData.personalInfo.bloodGroup,
             gender: formData.personalInfo.gender,
             role: formData.personalInfo.role,
-            date_of_birth: formData.personalInfo.dob,
+            dob: formData.personalInfo.dob,
             email_id: formData.addressDetails.email,
             current_address_1: formData.addressDetails.commAddress.doorNo,
             current_address_2: formData.addressDetails.commAddress.streetName,

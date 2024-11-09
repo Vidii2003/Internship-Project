@@ -129,3 +129,11 @@ h3 {
     font-size: 14px;
     border-radius: 5px;
 }
+
+input, select, .dob-picker {
+    width: 100%; /* or set to the specific width you want, e.g., 300px */
+    padding: 15px; /* Adjust padding to match the look of other fields */
+    font-size: 14px; /* Adjust to be consistent with other fields */
+    box-sizing: border-box; /* Ensures padding doesn’t affect the width */
+  }
+  
