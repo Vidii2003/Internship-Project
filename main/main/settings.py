@@ -80,13 +80,13 @@ WSGI_APPLICATION = "main.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "newdb",
-        "USER":"postgres",
-        "PASSWORD":"#Aathin2001",
-        "HOST":"localhost",
-        "PORT":"5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database-1',  
+        'USER': 'postgres',
+        'PASSWORD': 'Ecs12345*',
+        'HOST': 'database-1.cf26cye4en5p.ap-southeast-2.rds.amazonaws.com',  
+        'PORT': '5432',
     }
 }
 
