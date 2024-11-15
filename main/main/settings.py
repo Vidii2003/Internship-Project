@@ -73,6 +73,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "main.wsgi.application"
 
 
@@ -82,10 +83,10 @@ WSGI_APPLICATION = "main.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'database-1',  
-        'USER': 'postgres',
-        'PASSWORD': 'Ecs12345*',
-        'HOST': 'database-1.cf26cye4en5p.ap-southeast-2.rds.amazonaws.com',  
+        'NAME':'postgres',  # Ensure this is the correct DB name
+        'USER':'postgres',
+        'PASSWORD':'Ecs12345*',
+        'HOST': 'database-1.cf26cye4en5p.ap-southeast-2.rds.amazonaws.com',  # Corrected hostname
         'PORT': '5432',
     }
 }

@@ -26,20 +26,20 @@ class Member(models.Model):
     # Current Address
     current_address_1 = models.CharField(max_length=250, null=True, blank=True)
     current_address_2 = models.CharField(max_length=250, null=True, blank=True)
-    current_city = models.CharField(max_length=50)
-    current_district = models.CharField(max_length=50)
-    current_state = models.CharField(max_length=50)
-    current_country = models.CharField(max_length=50)
-    current_pin_code = models.CharField(max_length=6)
+    current_city = models.CharField(max_length=50, null=True, blank=True)
+    current_district = models.CharField(max_length=50, null=True, blank=True)
+    current_state = models.CharField(max_length=50, null=True, blank=True)
+    current_country = models.CharField(max_length=50, null=True, blank=True)
+    current_pin_code = models.CharField(max_length=6, null=True, blank=True)
 
     # Permanent Address
     permanent_address_1 = models.CharField(max_length=250, null=True, blank=True)
     permanent_address_2 = models.CharField(max_length=250, null=True, blank=True)
     permanent_city = models.CharField(max_length=50, null=True, blank=True)
-    permanent_district = models.CharField(max_length=50)
-    permanent_state = models.CharField(max_length=50)
-    permanent_country = models.CharField(max_length=50)
-    permanent_pin_code = models.CharField(max_length=6)
+    permanent_district = models.CharField(max_length=50, null=True, blank=True)
+    permanent_state = models.CharField(max_length=50, null=True, blank=True)
+    permanent_country = models.CharField(max_length=50, null=True, blank=True)
+    permanent_pin_code = models.CharField(max_length=6, null=True, blank=True)
 
     # Education and Job Details
     highest_qualification = models.CharField(max_length=100, null=True, blank=True)
@@ -51,7 +51,7 @@ class Member(models.Model):
     company_name = models.CharField(max_length=100, null=True, blank=True)
     job_designation = models.CharField(max_length=100, null=True, blank=True)
     company_location = models.CharField(max_length=50)
-    annual_income = models.CharField(max_length=50)
+    # annual_income = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
 
     class Meta:
