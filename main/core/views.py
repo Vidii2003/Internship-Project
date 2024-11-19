@@ -184,3 +184,37 @@ def member_detail(request):
 
     # Return the modified data with 'id' as the first field
     return Response(modified_data, status=status.HTTP_200_OK)
+
+
+
+@api_view(['POST'])  # For user login and authentication
+def login_view_og(request):
+    # Extract username (mobile number) and password from request data
+    username = request.data.get('username')  # Expecting mobile number as username
+    password = request.data.get('password')
+
+    # Validate the input
+    errors = {}
+    if not username:
+        errors["username"] = ["Mobile number is required."]
+    if not password:
+        errors["password"] = ["Password is required."]
+    if errors:
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Check if the username exists in the User table
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response({"username": ["This mobile number is not registered."]}, status=status.HTTP_400_BAD_REQUEST)
+
+    # Authenticate the user
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        return Response({
+            "message": "Login successful.",
+            "username": username  # Include username (mobile number) in the response
+        }, status=status.HTTP_200_OK)
+    
+    # If authentication fails
+    return Response({"non_field_errors": ["Invalid credentials: Incorrect username or password."]}, status=status.HTTP_400_BAD_REQUEST)
