@@ -24,7 +24,9 @@ const Dashboard = () => {
     console.log("Username (mobile number):", username); 
     const fetchMemberData = async () => {
       try {
+
         const response = await axios.post('http://localhost:8000/core/member_detail/', {
+
           mobile_number: username  
         });
         setMemberData(response.data); 
@@ -43,6 +45,7 @@ const Dashboard = () => {
   }, [username]);
 
   const [activeSection, setActiveSection] = useState("dashboard");
+
   const [isEditing, setIsEditing] = useState(true);
 
   const handleEdit = () => {
@@ -62,7 +65,7 @@ const Dashboard = () => {
   };
 
   const renderTable = (data, section) => {
-    if (!data) return null;
+    if (!data) return null; 
   
     return Object.keys(data).map((key) => (
       <tr key={key}>
@@ -85,7 +88,6 @@ const Dashboard = () => {
       </tr>
     ));
   };
-  
 
   return (
     <div className="container">

@@ -27,7 +27,6 @@ function Professional({ onNext, onPrevious, formData, savedData = {} }) {
             alert('Missing data, please check form data structure.');
             return;
         }
-        
         // Merge and format data here
         const finalData = {
             title: formData.personalInfo.title,
@@ -113,6 +112,7 @@ function Professional({ onNext, onPrevious, formData, savedData = {} }) {
 
                     {/* Job Role Input with Icon */}
                     <div className="input-container4">
+
                         <input type='text' name='jobrole' onChange={handleInputChange} placeholder="Job Role" value={value.jobrole}  required />
                         <FaBriefcase className="icon-prof" />
                     </div>

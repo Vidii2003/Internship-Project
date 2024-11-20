@@ -135,6 +135,7 @@ const AddressForm = ({ onNext, onPrevious, savedData = {} }) => {
         pincode: permPincode,
       },
       sameAsComm,
+
     }); // Navigate to next page
   }
 
@@ -348,6 +349,7 @@ const AddressForm = ({ onNext, onPrevious, savedData = {} }) => {
               <FaMailBulk className="icon8" />
             </div>
           </div>
+
 
           <button onClick={handlePrevious} className="res2">Previous</button>
           <button onClick={handleNext} className="res1">Next</button>

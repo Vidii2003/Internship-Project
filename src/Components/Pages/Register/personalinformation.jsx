@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react'; 
 import { FaUser, FaPhone, FaCalendarAlt, FaTransgender } from 'react-icons/fa';
 import { FaSortDown } from "react-icons/fa";
@@ -107,7 +108,6 @@ const PersonalInformation = ({
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-
   // Validation function for mobile number
   const validateMobile = (mobile) => /^[0-9]{7,15}$/.test(mobile.replace(/^\+?\d{1,3}/, ''));
 
@@ -339,12 +339,14 @@ const PersonalInformation = ({
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+
             <FaSortDown className="icon2" />
             <FaTransgender className="icon6" />
           </div>
 
           <div className="input-box">
             <select className="title" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}>
+
               <option value="">Select Blood Group</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>

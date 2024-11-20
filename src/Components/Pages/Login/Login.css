@@ -1,3 +1,4 @@
+
 /* Main container styling */
 .wrapper {
     position: relative;
@@ -26,7 +27,6 @@
     position: absolute;
     left: 0;
 }
-
 form h1 {
     font-size: 36px;
     text-align: center;
@@ -52,6 +52,7 @@ form .input-box {
     padding: 20px 45px 20px 20px;
 }
 
+
 .input-box input::placeholder {
     color: #000000;
 }
@@ -73,6 +74,7 @@ form .input-box {
 }
 
 form .remember-forgot {
+
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
@@ -85,6 +87,7 @@ form .remember-forgot {
     color: #000000;
     text-decoration: none;
 }
+
 
 .remember-forgot a:hover {
     text-decoration: underline;
@@ -115,10 +118,12 @@ form .register-link {
 }
 
 .register-link p a {
+
     color: #000000;
     text-decoration: none;
     font-weight: 600;
 }
+
 
 .register-link p a:hover {
     text-decoration: underline;

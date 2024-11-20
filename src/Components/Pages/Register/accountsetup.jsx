@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -5,7 +6,6 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import './style.css';
-
 const PhoneInputWrapper = styled.div`
   .react-tel-input {
     position: relative;
@@ -131,12 +131,12 @@ const AccountSetup = ({ onNext, savedData={} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
     if (!validateMobile()) {
       setError('Enter a valid mobile number.');
       return;
     }
     if (!validatePassword()) {
+
       return;
     }
 
@@ -148,10 +148,10 @@ const AccountSetup = ({ onNext, savedData={} }) => {
         mobile: fullMobile,
         password: password,
       });
-
       const { member_id, mobile: registeredMobile } = response.data;
 
       alert(`Registration Successful!\nMobile Number: ${registeredMobile}\nMember ID: ${member_id}`);
+
 
       onNext({
         mobile: fullMobile,

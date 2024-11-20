@@ -103,6 +103,7 @@ const SetupWizard = () => {
     alert(JSON.stringify(finalData, null, 2));  // Show JSON in alert for checking
   };
 
+
   return (
     <div>
       {step === 1 && (
@@ -146,5 +147,4 @@ const SetupWizard = () => {
     </div>
   );
 };
-
 export default SetupWizard;
