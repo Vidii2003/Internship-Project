@@ -1,0 +1,390 @@
+
+
+/* Navigation Bar Styles */
+.Navi {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 90px;
+  background: transparent; /* Set background to transparent */
+  overflow: hidden;
+  color:#000000;
+  transition: 1s;
+}
+
+.text-center{
+  color: #000000;
+}
+.Navi:hover {
+  width: 280px;
+  background: linear-gradient(45deg, rgba(255, 165, 0, 1), rgba(255, 223, 0, 1));
+  color:#000000;
+  transition: 1s;
+}
+
+.Navi #a {
+  display: flex;
+  align-items: center;
+  color:#000000; /* Set font color to white */
+  text-decoration: none;
+  padding: 10px;
+}
+
+.Navi .fas {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.Navi #a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Add a slight hover effect */
+}
+
+.logout {
+  position: absolute;
+  margin-bottom: 70px;
+}
+
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color:#000000; /* Set logo text color to white */
+}
+
+/* Adjusting nav-item visibility */
+.nav-item {
+  visibility: hidden; /* Initially hidden */
+  opacity: 0; /* Add transition effect */
+  margin-left: 10px;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+.Navi:hover .nav-item {
+  visibility: visible; /* Make visible */
+  opacity: 1;
+  transition: visibility 0s 0s, opacity 0.5s ease; /* Delay visibility for smooth transition */
+}
+
+/* Styles for nav items */
+.nav-item1 {
+  color: rgb(0, 0, 0); /* Set nav item text color to white */
+}
+
+.logout {
+  position: absolute;
+  margin-bottom: 70px;
+}
+
+.logo {
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+  padding-bottom: 3rem;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+#a {
+  position: relative;
+  width: 280px;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  display: table;
+  padding: 10px;
+}
+
+.Navi .fas {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.nav-item {
+  position: relative;
+  top: 0px;
+  margin-left: 10px;
+}
+
+#a:hover {
+  background: #eee;
+}
+
+#a:hover i {
+  color: #000000;
+  transition: 0.5s;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+
+.container {
+  display: flex;
+  background: linear-gradient(45deg, rgba(255, 165, 0, 1), rgba(255, 223, 0, 1));
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(35px);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  color: #000000;
+}
+
+.ul {
+  text-decoration: none;
+  list-style-type: none;
+  padding-left: 2px;
+}
+
+.nav-item1 {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  flex-wrap: wrap;
+  visibility: hidden;
+  transition: width 0.5s ease, visibility .5s ease;
+}
+
+.Navi:hover .nav-item1 {
+  width: 150px; /* Adjust this width as needed */
+  visibility: visible;
+}
+
+/* Main Section */
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+
+.main-top {
+  display: flex;
+  width: 100%;
+}
+
+.main-top i {
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+
+.main .users {
+  display: flex;
+  width: 100%;
+}
+
+.custom-logo {
+  width: 100px; /* Adjust the size of the logo as needed */
+  height: auto;
+}
+
+.users .card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  color:#000000;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.users .card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.users .card h4 {
+  text-transform: uppercase;
+}
+
+.users .card p {
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.users table {
+  margin: auto;
+}
+
+.users .per span {
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(223, 223, 223);
+}
+
+.users td {
+  font-size: 14px;
+  padding-right: 15px;
+  color:#000000;
+}
+
+.users .card button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+
+.users .card button:hover {
+  background: #4AD489;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.custom-table {
+  width: auto; /* Adjust width to fit the content */
+  table-layout: auto; /* Makes the table adjust to content size */
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shading effect */
+  border-radius: 8px;
+  color:#000000;
+}
+
+th, td {
+  padding: 15px; /* Add some padding for better readability */
+  text-align: left; /* Align text to the left */
+  background-color: rgba(255, 255, 255, 0.3); /* Transparent background for cells */
+  backdrop-filter: blur(10px); /* Consistent blur inside the table */
+  color:#000000;
+}
+
+th {
+  background-color: rgba(255, 237, 101, 0.8); /* Semi-transparent header background */
+  color: #000000; /* Darker text color for contrast */
+}
+
+td {
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background for data cells */
+  color:#000000;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent background for the entire table */
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Apply blur to the entire container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow for the container */
+  color:#000000;
+}
+
+/* Attendance List section */
+.attendance {
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.attendance-list {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+  color:#000000;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+  min-width: 100%;
+  overflow: hidden;
+  color:#000000;
+  border-radius: 5px 5px 0 0;
+}
+
+table thead tr {
+  color: #000000;
+  background: #34AF6D;
+  text-align: left;
+  font-weight: bold;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  color:#000000;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #ddd;
+  color:#000000;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background: #f3f3f3;
+  color:#000000;
+}
+
+.table tbody tr.active {
+  font-weight: bold;
+  color: #4AD489;
+}
+
+.table tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right */
+  margin-top: 20px; /* Add space between the table and the button */
+}
+
+.button-container button {
+  height: 40px;
+  width: 80px; /* Set a fixed width for uniformity */
+  padding: 10px; /* Add padding for a larger clickable area */
+  font-size: 16px; /* Increase font size */
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 40px; /* Add spacing between multiple buttons, if needed */
+}
+
+.button-container .btn-primary {
+  background-color: #ffc266; /* Adjusted to a color from the logo */
+  border-color: #34AF6D; /* Same as background */
+  color: rgb(0, 0, 0);
+  transition: background-color 0.3s ease;
+}
+
+.button-container .btn-primary:hover {
+  background-color: rgba(255, 164, 28, 0.871); /* Darker shade for hover effect */
+  border-color: #218838; /* Darker border on hover */
+}
+
+.button-container .btn-success {
+  background-color: #ffc266; /* A color inspired by the logo */
+  border-color: #218838; /* Same as background */
+  color: rgb(0, 0, 0);
+  transition: background-color 0.3s ease;
+}
+
+.button-container .btn-success:hover {
+  background-color: #ff9900; /* Darker shade for hover effect */
+  border-color: #218838; /* Darker border on hover */
+}

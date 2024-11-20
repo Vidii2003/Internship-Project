@@ -1,0 +1,179 @@
+/* Input box styling */
+form .input1-box {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  margin: 30px 0;
+}
+
+.input1-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .1);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px 25px 10px 10px;
+}
+
+.input1-box input::placeholder {
+  color: #fff;
+}
+
+/* Icon styling */
+.input1-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 16px;
+}
+
+.input1-box .icon1 {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 20px;
+}
+
+/* Table container styling */
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Enables horizontal scrolling for smaller screens */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+  backdrop-filter: blur(35px); /* Blurring background for a glassy effect */
+  border-radius: 10px; /* Rounded corners for aesthetic */
+  padding: 5px; /* Padding around the table */
+  transition: height 0.2s ease; /* Smooth transition for height changes */
+}
+
+/* Styling for the member table */
+.member-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures borders are not doubled */
+  margin: 20px 0;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.8); /* Darker background to match the immersive effect */
+}
+
+/* Add border to the table header and cells */
+.member-table th,
+.member-table td {
+  border: none; /* Remove borders */
+  padding: 5px; /* Maintain padding for better spacing */
+  background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for cells */
+  color: #fff; /* White text color for contrast */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Semi-transparent white border */
+
+}
+
+/* Styling for table headers */
+.member-table th {
+  background-color: rgba(255, 165, 0, 0.8); /* Solid orange background for headers */
+  color: #fff; /* White text for headers */
+  font-weight: bold; /* Make headers bold */
+}
+
+/* Row hover effect */
+.member-table tr:hover td {
+  background-color: rgba(255, 165, 0, 0.4); /* Light orange background on row hover */
+}
+
+/* Optional: Make table rows slightly translucent */
+.member-table tr {
+  background: rgba(255, 255, 255, 0.05); /* Light translucent effect for rows */
+}
+
+/* Styling for dropdown (select) elements */
+.member-table select {
+  width: 100%; /* Make it full width */
+  height: 30px; /* Match the height of the input fields */
+  background: transparent; /* Make background transparent */
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Transparent border */
+  border-radius: 40px; /* Same rounded corners as input fields */
+  color: #fff; /* White text color */
+  padding: 10px 25px 10px 10px; /* Padding for dropdown */
+  font-size: 16px; /* Font size */
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"%3E%3Cpath fill="%23fff" d="M6 8l-6-6h12z"/%3E%3C/svg%3E'); /* Custom dropdown arrow */
+  background-repeat: no-repeat; /* No repeat for arrow */
+  background-position: right 10px center; /* Position arrow */
+  background-size: 12px 8px; /* Size of arrow */
+}
+
+/* Optional: Styling for dropdown on hover/focus */
+.member-table select:hover,
+.member-table select:focus {
+  border-color: rgba(255, 165, 0, 0.8); /* Change border color on hover/focus */
+  outline: none; /* Remove default outline */
+}
+.input1-box {
+  display: flex;
+  justify-content: flex-start; /* Aligns the inputs to the left */
+  gap: 10px; /* Adds some space between the input fields */
+  flex-wrap: wrap; /* Allows input boxes to wrap if the container is too small */
+}
+
+.input1-box input {
+  flex: 0 1 auto; /* Ensures the input fields don't stretch too much */
+  width: auto; /* Allows for auto width based on the input content */
+}
+
+.member-table td select {
+  display: block;  /* Ensure the select is a block element */
+  text-align: left; /* Align the text inside the dropdown to the left */
+  width: 100%; /* Ensure it takes the full width of the table cell */
+  padding: 0; /* Remove all padding */
+  box-sizing: border-box; /* Ensure width calculation includes borders */
+}
+/* Ensure table cells have no padding */
+.member-table td {
+  padding: 0; /* Remove padding inside the table cells */
+}
+
+/* Specific styling for the select in the Role column */
+.member-table td select {
+  display: block;  /* Ensure the select is a block element */
+  text-align: left; /* Align the text inside the dropdown to the left */
+  width: 100%; /* Ensure it takes the full width of the table cell */
+  margin: 0; /* Remove any margins */
+  padding: 0; /* Remove any padding */
+  box-sizing: border-box; /* Include borders in the width calculation */
+}
+/* Round edges for the table */
+.member-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 15px; /* Round edges for the table */
+}
+
+/* Round corners for the first and last cells in the header */
+.member-table th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.member-table th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* Round corners for the first and last cells in the last row */
+.member-table tr:last-child td:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+.member-table tr:last-child td:last-child {
+  border-bottom-right-radius: 15px;
+}
+/* Styling for Member List heading */
+h2 {
+  color: #fff; /* Set text color to white */
+  font-size: 24px; /* Optional: Adjust the font size if needed */
+  text-align: center; /* Optional: Keep text centered */
+}
