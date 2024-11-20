@@ -334,6 +334,7 @@ position: relative;
     margin-bottom: -6%;
     text-align: left;
     color: #000;
+
     font-size: 20px;
     margin-left:2%;
 }
@@ -620,7 +621,7 @@ position: relative;
   
   
 
-/* Mobile customization */
+
 @media (max-width: 767px) {
     /* Example: Make headers and text adapt for mobile */
     h1, h2, h3, h4, h5, h6 {
@@ -659,4 +660,3 @@ position: relative;
     /* Additional component-specific mobile customizations */
     /* Add more based on elements that need resizing or repositioning */
   }
-  

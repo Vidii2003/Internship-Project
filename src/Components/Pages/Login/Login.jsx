@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
 
 const Login = () => {
     const [input, setInput] = useState({
+
         username: '',
         password: ''
     });
@@ -34,6 +35,7 @@ const Login = () => {
     
         try {
             const response = await axios.post('http://3.106.52.122/core/login/', {
+
                 username,
                 password
             });
@@ -50,7 +52,9 @@ const Login = () => {
                 setErrors(error.response.data);
     
                 // Trigger alert with error messages
+
                 if (error.response.data.username) {
+
                     alert(`Error with Mobile Number: ${error.response.data.username[0]}`);
                 } else if (error.response.data.password) {
                     alert(`Error with Password: ${error.response.data.password[0]}`);

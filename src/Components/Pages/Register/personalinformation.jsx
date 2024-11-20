@@ -301,9 +301,11 @@ const PersonalInformation = ({
             </PhoneInputWrapper>
           </div>
 
+
           {/*<div className="input-box">
            {/*<h2 className="dobh2">Date of Birth:<span className="required">*</span></h2>
             {/*<div className="checkbox-container">
+
               <input 
                 className="dob"
                 type="checkbox" 
@@ -314,6 +316,7 @@ const PersonalInformation = ({
               <label className="dobla" htmlFor="shareYear">Share my year of birth</label>
             </div>
             <div className="checkbox-container">
+
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <select className="date" value={day} onChange={(e) => setDay(e.target.value)} style={{ marginRight: '10px' }}>
                 <option value="">Day</option>
@@ -350,6 +353,7 @@ const PersonalInformation = ({
             />
           </div>
 
+
           <div className="input-box">
             <select className="title" value={gender} onChange={(e) => setGender(e.target.value)} required>
               <option value="">Select Gender</option>
@@ -357,12 +361,14 @@ const PersonalInformation = ({
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+
             <FaSortDown className="icon2" />
             <FaTransgender className="icon6" />
           </div>
 
           <div className="input-box">
             <select className="title" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}>
+
               <option value="">Select Blood Group</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
