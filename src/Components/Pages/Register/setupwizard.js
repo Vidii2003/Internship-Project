@@ -100,7 +100,7 @@ const SetupWizard = () => {
       ...formData.qualificationDetails,
       ...formData.professionalDetails
     };
-    alert(JSON.stringify(finalData, null, 2));  // Show JSON in alert for checking
+    // alert(JSON.stringify(finalData, null, 2));  // Show JSON in alert for checking
   };
 
   return (

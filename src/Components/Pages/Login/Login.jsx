@@ -31,10 +31,10 @@ const Login = () => {
     // Handle login form submission
     const handleLogin = async (e) => {
         e.preventDefault();
-        const { member_id, username, password } = input;
+        const { username, password } = input;
     
         try {
-            const response = await axios.post('http://3.106.52.122/core/login/', {
+            const response = await axios.post('http://3.106.52.122/core/loginnew/', {
 
                 username,
                 password
@@ -102,7 +102,7 @@ const Login = () => {
                     </div>
                     {errors.non_field_errors && <p className="error">{errors.non_field_errors[0]}</p>}
                     <div className="remember-forgot">
-                        <label><input type="checkbox" />Remember me</label>
+                        
                         <Link to="/Memberid" className="member">Forget MemberID?</Link><br/>
                         <Link to="/ResetPassword" className="pr">Forgot Password?</Link>
                     </div>

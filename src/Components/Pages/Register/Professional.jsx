@@ -5,24 +5,26 @@ import axios from 'axios'; // Import Axios
 import { FaBriefcase, FaBuilding, FaMapMarkerAlt, FaUserTie } from "react-icons/fa"; // Importing icons
 
 function Professional({ onNext, onPrevious, formData, savedData = {} }) {
-    let [value, setValue] = useState({
+    const [value, setValue] = useState({
         jobrole: savedData.jobrole || "",
         companyname: savedData.companyname || "",
         companylocation: savedData.companylocation || "",
         jobposition: savedData.jobposition || "",
     });
+
     const navigate = useNavigate(); // Initialize useNavigate
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setValue((prev) => ({
-          ...prev,
-          [name]: value
+            ...prev,
+            [name]: value,
         }));
-      };
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
+
         if (!formData || !formData.personalInfo || !formData.addressDetails || !formData.qualificationDetails) {
             alert('Missing data, please check form data structure.');
             return;
@@ -70,12 +72,12 @@ function Professional({ onNext, onPrevious, formData, savedData = {} }) {
         };
 
         // Show alert with all collected data
-        alert(JSON.stringify(finalData, null, 2));
+        // alert(JSON.stringify(finalData, null, 2));
 
         try {
             // Send data to backend with proper headers
             const response = await axios.post(
-                'http://127.0.0.1:8000/core/createmember/',
+                'http://3.106.52.122/core/createmember/',
                 finalData,
                 {
                     headers: {
@@ -85,12 +87,16 @@ function Professional({ onNext, onPrevious, formData, savedData = {} }) {
             );
 
             console.log(response.data); // Handle success response
-            // Call onNext with the final data and navigate to summary
-            onNext(finalData);
+            onNext(finalData); // Proceed to next step with data
             navigate('/'); // Adjust the path as necessary
         } catch (error) {
-            console.error('Error:', error.response?.data || error); // Log the exact error
-            alert(JSON.stringify(error.response?.data || 'An error occurred while sending data.', null, 2)); // Display detailed error message
+            if (error.response && error.response.data) {
+                // Show the backend error message in an alert
+                alert(`Error: ${JSON.stringify(error.response.data, null, 2)}`);
+            } else {
+                // Show a generic error message if no backend error is available
+                alert('An error occurred. Please try again.');
+            }
         }
     };
 
@@ -100,39 +106,62 @@ function Professional({ onNext, onPrevious, formData, savedData = {} }) {
             jobrole: value.jobrole,
             companyname: value.companyname,
             companylocation: value.companylocation,
-            jobposition: value.jobposition
+            jobposition: value.jobposition,
         });
     };
-    
 
     return (
         <div className='form-container4'>
             <div className='form-box4'>
-                <div className='personal-form'> {/* Add form tag here */}
+                <div className='personal-form'>
                     <h1 className='profh1'>Professional Details</h1>
 
                     {/* Job Role Input with Icon */}
                     <div className="input-container4">
-
-                        <input type='text' name='jobrole' onChange={handleInputChange} placeholder="Job Role" value={value.jobrole}  required />
+                        <input
+                            type='text'
+                            name='jobrole'
+                            onChange={handleInputChange}
+                            placeholder="Job Role"
+                            value={value.jobrole}
+                            required
+                        />
                         <FaBriefcase className="icon-prof" />
                     </div>
 
                     {/* Company Name Input with Icon */}
                     <div className="input-container4">
-                        <input type='text' name='companyname' onChange={handleInputChange} placeholder="Company Name" value={value.companyname}/>
+                        <input
+                            type='text'
+                            name='companyname'
+                            onChange={handleInputChange}
+                            placeholder="Company Name"
+                            value={value.companyname}
+                        />
                         <FaBuilding className="icon-prof" />
                     </div>
 
                     {/* Company Location Input with Icon */}
                     <div className="input-container4">
-                        <input type='text' name='companylocation' onChange={handleInputChange} placeholder="Company Location" value={value.companylocation}/>
+                        <input
+                            type='text'
+                            name='companylocation'
+                            onChange={handleInputChange}
+                            placeholder="Company Location"
+                            value={value.companylocation}
+                        />
                         <FaMapMarkerAlt className="icon-prof" />
                     </div>
 
                     {/* Job Position Input with Icon */}
                     <div className="input-container4">
-                        <input type='text' name='jobposition'  onChange={handleInputChange} placeholder="Job Position" value={value.jobposition}  />
+                        <input
+                            type='text'
+                            name='jobposition'
+                            onChange={handleInputChange}
+                            placeholder="Job Position"
+                            value={value.jobposition}
+                        />
                         <FaUserTie className="icon-prof" />
                     </div>
 
